@@ -1,0 +1,91 @@
+<mvc:View controllerName="fdrevampxbrowser.controller.MateriePrime"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page showNavButton="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" type="Transparent" press="onNavBack"/>
+                    <Text text="X-RF Materie Prime"/>
+                </contentLeft>
+                <contentRight>
+                    <Image src="../public/Logo.jpg" height="30px" width="100px" visible="true" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <!-- <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom sapUiMediumMarginTop">
+            <l:Grid defaultSpan="XL4 L3 M3 S6" width="100%" hSpacing="0" vSpacing="1" position="Center">
+
+                <GenericTile header="Pallettizzazione" press="onNav"/>
+                <GenericTile header="Immagazzinare" press="onNav"/>
+                <GenericTile header="Visualizzare funzioni WM" press="onNav"/>
+                <GenericTile header="Trasferimento interni" press="onNav"/>
+                <GenericTile header="Transf. ad altro magazzino" press="onNav"/>
+                <GenericTile header="Consumo a centro costo" press="onNav"/>
+                <GenericTile header="Parametrizzazione stampante" press="onNav"/>
+                <GenericTile header="Conto lavoro" press="onNav"/>
+                <GenericTile header="Conferma lista prelievo" press="onNav"/>
+            </l:Grid>
+        </FlexBox> -->
+        <FlexBox class="sapUiSmallMargin sapUiMediumMarginTop sapUiMediumMarginBottom" justifyContent="Center" wrap="Wrap">
+            <l:Grid defaultSpan="XL3 L3 M3 S6" width="auto" hSpacing="0" vSpacing="1" position="Center" class="sapUiNoContentPadding sapUiResponsiveContentPadding">
+                <GenericTile header="Pallettizzazione" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://shipping-status"/>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile header="Immagazzinare" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://shipping-container-loading"/>
+                    </TileContent>
+                </GenericTile>
+                <GenericTile header="Visualizzare funzioni WM" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://inspect"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Trasferimento interni" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://move"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Transf. ad altro magazzino" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://shipping-status"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Consumo a centro costo" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://expense-report"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Parametrizzazione stampante" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://print"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Conto lavoro" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://supplier"/>
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile header="Conferma lista prelievo" press=".onNav" class="sapUiTinyMargin">
+                    <TileContent>
+                        <ImageContent src="sap-icon://complete"/>
+                    </TileContent>
+                </GenericTile>
+
+            </l:Grid>
+        </FlexBox>
+
+    </Page>
+</mvc:View>
