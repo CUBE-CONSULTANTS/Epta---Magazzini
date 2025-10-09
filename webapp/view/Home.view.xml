@@ -3,112 +3,53 @@
     xmlns:f="sap.f"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <customHeader>
-            <Bar>
-                <contentLeft>
-                    <Text text="{i18n>title}"/>
-                </contentLeft>
-                <contentRight>
-                    <Image src="../public/Logo.jpg" height="30px" width="100px" visible="true" />
-                </contentRight>
-            </Bar>
-        </customHeader>
-        <VBox alignItems="Center" width="100%" class="sapUiMediumMarginTop">
-            <items>
-                <HBox alignItems="Stretch" width="100%" justifyContent="SpaceAround" class="sapUiTinyMarginEnd">
-                    <items>
-                        <l:Grid class="sapUiNoMarginTop" hSpacing="1" defaultSpan="L6 M6 S6">
-                            <!-- Info Materiale -->
-                            <VBox alignItems="Center" width="100%" height="auto" justifyContent="SpaceBetween">
-                                <items>
-                                    <GenericTile header="Materie Prime" press="onNavDetail">
-                                        <TileContent>
-                                            <ImageContent src="./resources/List.png" />
-                                        </TileContent>
-                                    </GenericTile>
-                                </items>
-                            </VBox>
-                            <!-- New DDT -->
-                            <VBox alignItems="Center" width="100%" height="auto" justifyContent="SpaceBetween">
-                                <items>
-                                    <GenericTile header="Semilavorati" press="onNavDetail">
-                                        <TileContent>
-                                            <ImageContent src="" />
-                                        </TileContent>
-                                    </GenericTile>
-                                </items>
-                            </VBox>
-                        </l:Grid>
-                    </items>
-                </HBox>
-            </items>
+
+    <FlexBox direction="Row" width="100%" height="100%" class="fullScreenFlexBox">
+
+        <!-- Sidebar -->
+        <VBox renderType="Bare" alignItems="Start" width="auto" height="100%">
+            <tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false" itemSelect="onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem text="Materie Prime" icon="sap-icon://building" selectable="true">
+                        <tnt:NavigationListItem text="Pallettizzazione" />
+                        <tnt:NavigationListItem text="Immagazzinare" />
+                        <tnt:NavigationListItem text="Visualizzare funzioni WM" />
+                        <tnt:NavigationListItem text="Trasferimenti interni" />
+                        <tnt:NavigationListItem text="Trasf. ad alto magazzino" />
+                        <tnt:NavigationListItem text="Consumo a centro costo" />
+                        <tnt:NavigationListItem text="Parametrare stampante" />
+                        <tnt:NavigationListItem text="Conto lavoro" />
+                        <tnt:NavigationListItem text="Conferma lista prelievo" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Semilavorati" icon="sap-icon://mileage" selectable="true"/>
+                    <tnt:NavigationListItem text="Conferma di Produzione" icon="sap-icon://accept" selectable="true"/>
+                    <tnt:NavigationListItem text="Production manual transfer" icon="sap-icon://shipping-status" selectable="true"/>
+                </tnt:NavigationList>
+                <tnt:fixedItem>
+                    <tnt:NavigationList>
+                        <tnt:NavigationListItem icon="sap-icon://menu2" text="Collapse/Expand" press="onCollapseExpandPress"/>
+                    </tnt:NavigationList>
+                </tnt:fixedItem>
+            </tnt:SideNavigation>
         </VBox>
-        <!-- Seconda riga -->
-        <VBox alignItems="Center" width="100%">
-            <items>
-                <HBox alignItems="Stretch" width="100%" justifyContent="SpaceAround" class="sapUiTinyMarginEnd">
-                    <items>
-                        <l:Grid class="sapUiNoMarginTop" hSpacing="1" defaultSpan="L6 M6 S6">
-                            <!-- Prelievo -->
-                            <VBox alignItems="Center" width="100%" height="105px" justifyContent="SpaceBetween">
-                                <items>
-                                    <GenericTile header="Conferma Produzione" press="onNavDetail">
-                                        <TileContent>
-                                            <ImageContent src="" />
-                                        </TileContent>
-                                    </GenericTile>
-                                </items>
-                            </VBox>
-                            <!-- Rientro -->
-                            <VBox alignItems="Center" width="100%" height="105px" justifyContent="SpaceBetween">
-                                <items>
-                                    <GenericTile header="Production manual transfer" press="onNavDetail">
-                                        <TileContent>
-                                            <ImageContent src="" />
-                                        </TileContent>
-                                    </GenericTile>
-                                </items>
-                            </VBox>
-                        </l:Grid>
-                    </items>
-                </HBox>
-            </items>
+
+
+        <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center" visible="{modello>/image}">
+            <Image src="../public/Logo-epta.png" width="100%" height="100%" densityAware="false" decorative="false" />
         </VBox>
-        <!-- <l:VerticalLayout width="100%" class="gridWrapper">
-            <l:Grid containerQuery="true" defaultSpan="XL2 L4" hSpacing="0">
-                <GenericTile header="Materie Prime" press="press">
-                    <TileContent>
-                        <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
-                    </TileContent>
-                </GenericTile>
-                <GenericTile header="Semilavorati" press="press">
-                    <TileContent>
-                        <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
-                    </TileContent>
-                </GenericTile>
-                <GenericTile header="Conferma Produzione" press="press">
-                    <TileContent>
-                        <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
-                    </TileContent>
-                </GenericTile>
-                <GenericTile header="Production manual transfer" press="press">
-                    <TileContent>
-                        <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
-                    </TileContent>
-                </GenericTile>
-            </l:Grid>
-        </l:VerticalLayout> -->
-        <!-- <f:Card class="sapUiMediumMargin" width="300px">
-            <f:content>
-                <Title text="Materie Prime"></Title>
-            </f:content>
-        </f:Card>
-        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Materie Prime" press="press" frameType="OneByHalf" subheader="Subtitle">
-            <TileContent>
-                <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
-            </TileContent>
-        </GenericTile> -->
-    </Page>
+
+        <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Start" visible="{modello>/panel}">
+            <Panel expandable="true" headerText="Pallettizzazione" width="auto" class="sapUiResponsiveMargin">
+                <content>
+                    <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.FirstStepWizard" type="XML" />
+                </content>
+            </Panel>
+
+        </VBox>
+
+    </FlexBox>
+
 </mvc:View>

@@ -6,7 +6,7 @@
     xmlns="sap.m">
     <NavContainer id="wizardNavContainer">
         <pages>
-            <Page id="pageWizard" >
+            <Page id="pageWizard">
                 <customHeader>
                     <Bar>
                         <contentLeft>
@@ -24,7 +24,6 @@
                     </WizardStep>
                 </Wizard>
             </Page>
-            <!-- review page -->
             <Page id="wizardReviewPage" showHeader="true">
                 <customHeader>
                     <Bar>
