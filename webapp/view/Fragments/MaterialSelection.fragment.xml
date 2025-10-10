@@ -12,6 +12,7 @@
                 <Input value="{modello>/numeroMagazzino}"/>
                 <Label text="Codice Materiale" />
                 <Input value="{modello>/codMateriale}"/>
+                <Button text="Cerca" press="onListaMateriali" type="Emphasized" />
             </f:content>
         </f:SimpleForm>
     </VBox>

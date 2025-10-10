@@ -3,37 +3,42 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:unified="sap.ui.unified">
-
-    <Table autoPopinMode="true" contextualWidth="Auto" items="{
+    <VBox >
+        <Table autoPopinMode="true" contextualWidth="Auto" items="{
 			path: 'modello>/listaMateriali' 
 		}" mode="SingleSelectLeft" selectionChange="onChangeSelectMaterial">
-        <columns>
-            <Column width="14em">
-                <Text text="Materiale" />
-            </Column>
-            <Column width="8em">
-                <Text text="Ubdicazione Prov." />
-            </Column>
-            <Column width="14%">
-                <Text text="Tipo" />
-            </Column>
-            <Column width="8em">
-                <Text text="Divisione" />
-            </Column>
-            <Column width="10em">
-                <Text text="Stock Disponibile" />
-            </Column>
-        </columns>
-        <items>
-            <ColumnListItem vAlign="Middle">
-                <cells>
-                    <ObjectIdentifier title="{modello>materiale}" text="{modello>descrizione_materiale}" />
-                    <Text text="{modello>ubicazione}" />
-                    <Text text="{modello>tipo}" />
-                    <Text text="{modello>divisione}" />
-                    <Text text="{modello>stock_dispo}" />
-                </cells>
-            </ColumnListItem>
-        </items>
-    </Table>
+            <columns>
+                <Column width="14em">
+                    <Text text="Materiale" />
+                </Column>
+                <Column width="8em">
+                    <Text text="Ubdicazione Prov." />
+                </Column>
+                <Column width="14%">
+                    <Text text="Tipo" />
+                </Column>
+                <Column width="8em">
+                    <Text text="Divisione" />
+                </Column>
+                <Column width="10em">
+                    <Text text="Stock Disponibile" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <ObjectIdentifier title="{modello>materiale}" text="{modello>descrizione_materiale}" />
+                        <Text text="{modello>ubicazione}" />
+                        <Text text="{modello>tipo}" />
+                        <Text text="{modello>divisione}" />
+                        <Text text="{modello>stock_dispo}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <OverflowToolbar >
+            <ToolbarSpacer />
+            <Button text="Salva" type="Emphasized" enabled="{modello>/enableSave}" press="onSave"/>
+        </OverflowToolbar>
+    </VBox>
 </c:FragmentDefinition> 

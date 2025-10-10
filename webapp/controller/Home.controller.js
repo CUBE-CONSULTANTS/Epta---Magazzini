@@ -1,30 +1,34 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment",
+    "./BaseController"
+], (Controller, Fragment, BaseController) => {
     "use strict";
 
-    return Controller.extend("fdrevampxbrowser.controller.Home", {
+    return BaseController.extend("fdrevampxbrowser.controller.Home", {
         onInit() {
-            this.getView().setModel(new sap.ui.model.json.JSONModel({ image: true, panel: false }), "modello")
+            this.getView().setModel(new sap.ui.model.json.JSONModel({ image: true, panel: false, recap: false }), "modelloVisibilit")
+            this.createModel(this)
         },
-        onNavDetail: function (oEvent) {
-            const oRouter = this.getOwnerComponent().getRouter();
-            let titleTile = oEvent.getSource().getProperty("header")
-            switch (titleTile) {
-                case 'Materie Prime':
-                    oRouter.navTo("MateriePrime");
-                    break;
-                case 'Semilavorati':
-
-                    break;
-                case 'Conferma Produzione':
-
-                    break;
-                case 'Production manual transfer':
-
-                    break;
-            }
-
+        onCreatePanel: async function (filename, self, title) {
+            return new sap.m.Panel({
+                headerText: title,
+                expandable: true,
+                expanded: true,
+                width: "auto",
+                content: await Fragment.load({
+                    name: filename,
+                    controller: self
+                })
+            }).addStyleClass("sapUiResponsiveMargin");
+        },
+        onSelectPallettizzazione: async function (oEvent) {
+            var oPanel = await this.onCreatePanel("fdrevampxbrowser.view.Fragments.MaterialSelection", this, "Seleziona Materiale")
+            this.byId("vbox").addItem(oPanel);
+        },
+        onListaMateriali: async function (oEvent) {
+            var oPanel = await this.onCreatePanel("fdrevampxbrowser.view.Fragments.MaterialList", this, "Seleziona Materiale")
+            this.byId("vbox").addItem(oPanel);
         },
         onCollapseExpandPress: function () {
             const oSideNavigation = this.byId("sideNavigation"),
@@ -35,16 +39,32 @@ sap.ui.define([
         onItemSelect: function (oEvent) {
             let selected = oEvent.getParameters("item").item.getProperty("text")
             if (selected == 'Collapse/Expand') return
-            debugger
+            if (selected == 'Home') {
+                if (this.byId("vbox").getItems().length > 1) {
+                    this.byId("vbox").getItems().forEach((element, index) => {
+                        if (index != 0) {
+                            this.byId("vbox").removeItem(element.sId)
+                        }
+                    });
+                    this.getView().getModel("modello").setProperty("/selected", null)
+                }
+                this.getView().getModel("modelloVisibilit").setProperty("/image", true)
+                this.getView().getModel("modelloVisibilit").setProperty("/panel", false)
+            }
             switch (selected) {
                 case 'Pallettizzazione':
-                    this.getView().getModel("modello").setProperty("/image", false)
-                    this.getView().getModel("modello").setProperty("/panel", true)
+                    this.getView().getModel("modelloVisibilit").setProperty("/image", false)
+                    this.getView().getModel("modelloVisibilit").setProperty("/panel", true)
                     break;
 
                 default:
                     break;
             }
+        },
+        onSave: function () {
+            this.getView().getModel("modelloVisibilit").setProperty("/panel", false)
+            this.getView().getModel("modelloVisibilit").setProperty("/recap", true)
+
         }
     });
 });

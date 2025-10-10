@@ -6,14 +6,11 @@
     <VBox >
         <form:SimpleForm title="1. Pallettizzazione" editable="false" layout="ResponsiveGridLayout">
             <form:content>
-                <FlexBox justifyContent="SpaceAround">
-                    <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.FirstStepWizard" type="XML" />
-                    <Link press="goStepOne" text="Edit" />
-                </FlexBox>
+                <Label text="Pallettizzazione"/>
+                <Text text="{modello>/selected}" />
+
             </form:content>
         </form:SimpleForm>
-
-
 
         <form:SimpleForm editable="true" layout="ResponsiveGridLayout" title="2. Materiale" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false">
             <form:content>
@@ -28,30 +25,17 @@
                 <Text text="{modelloAppoggio>/Pallettizzazione/numeroMagazzino}"/>
                 <c:Title text="Quantità" />
                 <Label text="Numero Etichette da stampare" wrapping="true"/>
-                <StepInput value="{modelloAppoggio>/Pallettizzazione/numeroStampe}" min="0" step="1" width="20%" textAlign="Center" stepMode="AdditionAndSubtraction"/>
+                <StepInput value="{modelloAppoggio>/Pallettizzazione/numeroStampe}" min="0" step="1" width="10%" textAlign="Center" stepMode="AdditionAndSubtraction"/>
                 <Label text="Simmetrico"/>
                 <CheckBox selected="{modelloAppoggio>/Pallettizzazione/simmetrico}" />
                 <Label text="Quantità"/>
-                <Input value="{modelloAppoggio>/Pallettizzazione/quantità}"/>
-                <Link press="goStepTwo" text="Edit" />
+                <Input value="{modelloAppoggio>/Pallettizzazione/quantità}" width="30%"/>
             </form:content>
         </form:SimpleForm>
-        <!-- <form:SimpleForm title="2. Materiale" editable="false" layout="ResponsiveGridLayout">
-            <form:content>
-                <Label text="Materiale"/>
-                <ObjectIdentifier title="{modelloAppoggio>/Pallettizzazione/materiale}" text="{modelloAppoggio>/Pallettizzazione/descrizione_materiale}" />
-                <Label text="Stock Disp."/>
-                <Text text="{modelloAppoggio>/Pallettizzazione/stock_dispo}"/>
-                <Label text="Numero Magazzino"/>
-                <Text text="{modelloAppoggio>/Pallettizzazione/numeroMagazzino}"/>
-                <Label text="Numero Etichette da stampare"/>
-                <StepInput value="{modelloAppoggio>/Pallettizzazione/numeroStampe}" min="0" step="1" width="20%" textAlign="Center" stepMode="AdditionAndSubtraction"/>
-                <Label text="Simmetrico"/>
-                <CheckBox selected="{modelloAppoggio>/Pallettizzazione/simmetrico}" />
-                <Label text="Quantità"/>
-                <Input value="{modelloAppoggio>/Pallettizzazione/quantità}"/>
-                <Link press="editStepTwo" text="Edit" />
-            </form:content>
-        </form:SimpleForm> -->
+        <OverflowToolbar >
+            <ToolbarSpacer />
+            <Button text="Salva"/>
+            <Button text="Annulla"/>
+        </OverflowToolbar>
     </VBox>
 </c:FragmentDefinition> 

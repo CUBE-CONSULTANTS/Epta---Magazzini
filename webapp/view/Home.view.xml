@@ -6,10 +6,7 @@
     xmlns:form="sap.ui.layout.form"
     xmlns:tnt="sap.tnt"
     xmlns="sap.m">
-
     <FlexBox direction="Row" width="100%" height="100%" class="fullScreenFlexBox">
-
-        <!-- Sidebar -->
         <VBox renderType="Bare" alignItems="Start" width="auto" height="100%">
             <tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false" itemSelect="onItemSelect">
                 <tnt:NavigationList>
@@ -30,26 +27,39 @@
                 </tnt:NavigationList>
                 <tnt:fixedItem>
                     <tnt:NavigationList>
+                        <tnt:NavigationListItem icon="sap-icon://home" text="Home" />
                         <tnt:NavigationListItem icon="sap-icon://menu2" text="Collapse/Expand" press="onCollapseExpandPress"/>
                     </tnt:NavigationList>
                 </tnt:fixedItem>
             </tnt:SideNavigation>
         </VBox>
 
+        <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit">
 
-        <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center" visible="{modello>/image}">
-            <Image src="../public/Logo-epta.png" width="100%" height="100%" densityAware="false" decorative="false" />
+            <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center" visible="{modelloVisibilit>/image}">
+                <Image src="../public/Logo-epta.png" width="100%" height="100%" densityAware="false" decorative="false" />
+            </VBox>
+
+            <ScrollContainer width="100%" height="100%" horizontal="false" vertical="true" visible="{modelloVisibilit>/panel}">
+                <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit" id="vbox">
+                    <Panel expandable="true" expanded="true" headerText="Pallettizzazione" width="100%" height="100%" class="sapUiResponsiveMargin sapUiNoContentPadding">
+                        <content>
+                            <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.FirstStepWizard" type="XML" />
+                        </content>
+                    </Panel>
+                </VBox>
+            </ScrollContainer>
+
+            <ScrollContainer width="100%" height="100%" horizontal="false" vertical="true" visible="{modelloVisibilit>/recap}">
+                <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit" id="recap">
+                    <Panel expandable="true" expanded="true" headerText="Pallettizzazione" width="100%" height="100%" class="sapUiResponsiveMargin sapUiNoContentPadding">
+                        <content>
+                            <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.ReviewWizard" type="XML" />
+                        </content>
+                    </Panel>
+                </VBox>
+            </ScrollContainer>
         </VBox>
-
-        <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Start" visible="{modello>/panel}">
-            <Panel expandable="true" headerText="Pallettizzazione" width="auto" class="sapUiResponsiveMargin">
-                <content>
-                    <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.FirstStepWizard" type="XML" />
-                </content>
-            </Panel>
-
-        </VBox>
-
     </FlexBox>
 
 </mvc:View>
