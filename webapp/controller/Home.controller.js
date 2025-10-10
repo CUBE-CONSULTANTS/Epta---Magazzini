@@ -37,8 +37,11 @@ sap.ui.define([
             oSideNavigation.setExpanded(!bExpanded);
         },
         onItemSelect: function (oEvent) {
+            debugger
+            const oRouter = this.getOwnerComponent().getRouter();
             let selected = oEvent.getParameters("item").item.getProperty("text")
             if (selected == 'Collapse/Expand') return
+            oRouter.navTo("Palletisation",{'TYPE':selected})
             if (selected == 'Home') {
                 if (this.byId("vbox").getItems().length > 1) {
                     this.byId("vbox").getItems().forEach((element, index) => {

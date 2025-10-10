@@ -79,14 +79,9 @@
           "target": ["TargetHome"]
         },
         {
-          "name": "MateriePrime",
-          "pattern": "MateriePrime",
-          "target": ["MateriePrime"]
-        },
-        {
-          "name": "Pallettizzazione",
-          "pattern": "Pallettizzazione",
-          "target": ["Pallettizzazione"]
+          "name": "Palletisation",
+          "pattern": "Palletisation/{TYPE}",
+          "target": ["Palletisation"]
         }
       ],
       "targets": {
@@ -94,13 +89,9 @@
           "id": "Home",
           "name": "Home"
         },
-        "MateriePrime": {
-          "id": "MateriePrime",
-          "name": "MateriePrime"
-        },
-        "Pallettizzazione": {
-          "id": "Pallettizzazione",
-          "name": "Pallettizzazione"
+        "Palletisation": {
+          "id": "Palletisation",
+          "name": "Palletisation"
         }
       }
     },
