@@ -15,6 +15,8 @@
                         <OverflowToolbarLayoutData priority="NeverOverflow" />
                     </layoutData>
                 </Button>
+                <Title text="EPTA"/>
+
                 <ToolbarSpacer />
                 <Image src="../public/Logo.jpg" height="30px" width="100px" visible="true" />
             </tnt:ToolHeader>

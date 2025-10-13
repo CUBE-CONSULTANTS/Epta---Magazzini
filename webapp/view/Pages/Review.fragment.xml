@@ -20,7 +20,7 @@
             <OverflowToolbar >
                 <ToolbarSpacer />
                 <Button text="Salva" type="Accept" icon="sap-icon://save"/>
-                <Button text="Annulla" type="Reject" icon="sap-icon://decline"/>
+                <Button text="Annulla" type="Reject" icon="sap-icon://decline" press="onNavBack"/>
             </OverflowToolbar>
         </footer>
     </Page>
