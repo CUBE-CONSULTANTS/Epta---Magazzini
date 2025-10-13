@@ -16,9 +16,8 @@
                     </layoutData>
                 </Button>
                 <Title text="EPTA"/>
-
                 <ToolbarSpacer />
-                <Image src="../public/Logo.jpg" height="30px" width="100px" visible="true" />
+                <Image src="../public/logo.png" height="30px" width="90px" visible="true" />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>

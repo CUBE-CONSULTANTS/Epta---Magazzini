@@ -11,7 +11,7 @@
                     <Text text="Pallettizzazione"/>
                 </contentLeft>
                 <contentRight>
-                    <Image src="../public/logo.png" height="30px" width="90px" visible="true" />
+                    <!-- <Image src="../public/logo.png" height="30px" width="90px" visible="true" /> -->
                 </contentRight>
             </Bar>
         </customHeader>
