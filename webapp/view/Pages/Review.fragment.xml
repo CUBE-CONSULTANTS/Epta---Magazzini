@@ -1,0 +1,27 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified">
+    <Page showHeader="true" enableScrolling="true" id="review">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" type="Transparent" press="onNavBack"/>
+                    <Text text="Pallettizzazione"/>
+                </contentLeft>
+                <contentRight>
+                    <Image src="../public/logo.png" height="30px" width="90px" visible="true" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.ReviewWizard" type="XML" />
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer />
+                <Button text="Salva" type="Accept" icon="sap-icon://save"/>
+                <Button text="Annulla" type="Reject" icon="sap-icon://decline"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</c:FragmentDefinition> 

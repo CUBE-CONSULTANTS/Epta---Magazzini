@@ -6,12 +6,24 @@
     xmlns:form="sap.ui.layout.form"
     xmlns:tnt="sap.tnt"
     xmlns="sap.m">
-    <FlexBox direction="Row" width="100%" height="100%" class="fullScreenFlexBox">
-        <VBox renderType="Bare" alignItems="Start" width="auto" height="100%">
-            <tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false" itemSelect="onItemSelect">
+
+    <tnt:ToolPage id="toolPage" sideExpanded="true">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer />
+                <Image src="../public/Logo.jpg" height="30px" width="100px" visible="true" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false" itemSelect=".onQuickActionPress">
                 <tnt:NavigationList>
                     <tnt:NavigationListItem text="Materie Prime" icon="sap-icon://building" selectable="true">
-                        <tnt:NavigationListItem text="Pallettizzazione" />
+                        <tnt:NavigationListItem text="Pallettizzazione" key="materiale"/>
                         <tnt:NavigationListItem text="Immagazzinare" />
                         <tnt:NavigationListItem text="Visualizzare funzioni WM" />
                         <tnt:NavigationListItem text="Trasferimenti interni" />
@@ -25,41 +37,22 @@
                     <tnt:NavigationListItem text="Conferma di Produzione" icon="sap-icon://accept" selectable="true"/>
                     <tnt:NavigationListItem text="Production manual transfer" icon="sap-icon://shipping-status" selectable="true"/>
                 </tnt:NavigationList>
-                <tnt:fixedItem>
-                    <tnt:NavigationList>
-                        <tnt:NavigationListItem icon="sap-icon://home" text="Home" />
-                        <tnt:NavigationListItem icon="sap-icon://menu2" text="Collapse/Expand" press="onCollapseExpandPress"/>
-                    </tnt:NavigationList>
-                </tnt:fixedItem>
             </tnt:SideNavigation>
-        </VBox>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer id="pageContainer" initialPage="page2">
+                <pages>
+                    <Page showHeader="false" enableScrolling="false">
+                        <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center">
+                            <Image src="../public/Logo-epta.png" width="100%" height="100%" decorative="false" />
+                        </VBox>
+                    </Page>
+                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Materiale" type="XML" />
+                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Review" type="XML" />
 
-        <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit">
-
-            <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center" visible="{modelloVisibilit>/image}">
-                <Image src="../public/Logo-epta.png" width="100%" height="100%" densityAware="false" decorative="false" />
-            </VBox>
-
-            <ScrollContainer width="100%" height="100%" horizontal="false" vertical="true" visible="{modelloVisibilit>/panel}">
-                <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit" id="vbox">
-                    <Panel expandable="true" expanded="true" headerText="Pallettizzazione" width="100%" height="100%" class="sapUiResponsiveMargin sapUiNoContentPadding">
-                        <content>
-                            <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.FirstStepWizard" type="XML" />
-                        </content>
-                    </Panel>
-                </VBox>
-            </ScrollContainer>
-
-            <ScrollContainer width="100%" height="100%" horizontal="false" vertical="true" visible="{modelloVisibilit>/recap}">
-                <VBox width="100%" height="100%" alignItems="Stretch" justifyContent="Inherit" id="recap">
-                    <Panel expandable="true" expanded="true" headerText="Pallettizzazione" width="100%" height="100%" class="sapUiResponsiveMargin sapUiNoContentPadding">
-                        <content>
-                            <core:Fragment fragmentName="fdrevampxbrowser.view.Fragments.ReviewWizard" type="XML" />
-                        </content>
-                    </Panel>
-                </VBox>
-            </ScrollContainer>
-        </VBox>
-    </FlexBox>
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 
 </mvc:View>

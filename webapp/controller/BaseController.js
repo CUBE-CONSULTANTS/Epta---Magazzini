@@ -10,8 +10,31 @@ sap.ui.define([
         "use strict";
         return Controller.extend("fdrevampxbrowser.controller.BaseController", {
             onNavBack: function (oEvent) {
-                window.history.back(-1)
+                let oNavContainer = this.byId("pageContainer")
+                if (oNavContainer.getPreviousPage()) {
+                    oNavContainer.back();
+                } else {
+                    oNavContainer.to("page2");
+                }
             },
+            _setToggleButtonTooltip: function (bLarge) {
+                var oToggleButton = this.byId('sideNavigationToggleButton');
+                if (bLarge) {
+                    oToggleButton.setTooltip('Large Size Navigation');
+                } else {
+                    oToggleButton.setTooltip('Small Size Navigation');
+                }
+            },
+            onSideNavButtonPress: function () {
+                debugger
+                var oToolPage = this.byId("toolPage");
+                var bSideExpanded = oToolPage.getSideExpanded();
+
+                this._setToggleButtonTooltip(bSideExpanded);
+
+                oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
+            },
+
             onNavHome: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteHome");

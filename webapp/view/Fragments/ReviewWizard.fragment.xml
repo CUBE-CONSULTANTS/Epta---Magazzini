@@ -23,7 +23,7 @@
                 <Text text="{modelloAppoggio>/Pallettizzazione/stock_dispo}"/>
                 <Label text="Numero Magazzino"/>
                 <Text text="{modelloAppoggio>/Pallettizzazione/numeroMagazzino}"/>
-                <c:Title text="Quantità" />
+                <!-- <c:Title text="Quantità" /> -->
                 <Label text="Numero Etichette da stampare" wrapping="true"/>
                 <StepInput value="{modelloAppoggio>/Pallettizzazione/numeroStampe}" min="0" step="1" width="10%" textAlign="Center" stepMode="AdditionAndSubtraction"/>
                 <Label text="Simmetrico"/>
@@ -32,10 +32,5 @@
                 <Input value="{modelloAppoggio>/Pallettizzazione/quantità}" width="30%"/>
             </form:content>
         </form:SimpleForm>
-        <OverflowToolbar >
-            <ToolbarSpacer />
-            <Button text="Salva"/>
-            <Button text="Annulla"/>
-        </OverflowToolbar>
     </VBox>
 </c:FragmentDefinition> 
