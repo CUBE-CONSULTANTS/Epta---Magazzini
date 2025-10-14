@@ -26,7 +26,7 @@ sap.ui.define([
                 }
             },
             onSideNavButtonPress: function () {
-                debugger
+                //debugger
                 var oToolPage = this.byId("toolPage");
                 var bSideExpanded = oToolPage.getSideExpanded();
 
@@ -42,7 +42,7 @@ sap.ui.define([
             onChangeSelectMaterial: function (oEvent) {
                 const itemsSelected = oEvent.getSource().getSelectedItems()
                 if (itemsSelected.length != 0) {
-                    debugger
+                    //debugger
                     this.getView().getModel("modello").setProperty("/enableSave", true)
                     this.getOwnerComponent().getModel("modelloAppoggio").setProperty("/Pallettizzazione", {
                         ...oEvent.getSource().getSelectedItem().getBindingContext("modello").getObject(),

@@ -24,7 +24,7 @@ sap.ui.define([
         },
         onSelectPallettizzazione: async function (oEvent) {
             var oPanel = await this.onCreatePanel("fdrevampxbrowser.view.Fragments.MaterialSelection", this, "2. Materiale")
-            debugger
+            //debugger
             this.byId("materiale").addContent(oPanel);
         },
         onListaMateriali: async function (oEvent) {
@@ -32,7 +32,7 @@ sap.ui.define([
             this.byId("materiale").addContent(oPanel);
         },
         onQuickActionPress: function (oEvent) {
-            debugger
+            //debugger
             var oItem = oEvent.getParameter("item");
             this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
         },
@@ -59,7 +59,7 @@ sap.ui.define([
             }
             switch (selected) {
                 case 'Pallettizzazione':
-                    debugger
+                    //debugger
                     break;
 
                 default:
