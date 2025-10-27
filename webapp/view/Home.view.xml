@@ -17,7 +17,7 @@
                 </Button>
                 <Title text="EPTA"/>
                 <ToolbarSpacer />
-                <Image  src="{
+                <Image src="{
                         value: 'fdrevampxbrowser/public/logo.png',
                         formatter: 'sap.ui.require.toUrl'
                         }" height="30px" width="90px" visible="true" />
@@ -48,7 +48,10 @@
                 <pages>
                     <Page showHeader="false" enableScrolling="false">
                         <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center">
-                            <Image src="../public/Logo-epta.png" width="100%" height="100%" decorative="false" />
+                            <Image src="{
+                                    value: 'fdrevampxbrowser/public/Logo-epta.png',
+                                    formatter: 'sap.ui.require.toUrl'
+                                    }" width="100%" height="100%" decorative="false" />
                         </VBox>
                     </Page>
                     <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Materiale" type="XML" />

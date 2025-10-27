@@ -12,7 +12,10 @@
                     <Text text="X-RF Materie Prime"/>
                 </contentLeft>
                 <contentRight>
-                    <Image src="/public/Logo.jpg" height="30px" width="100px" visible="true" />
+                    <Image src="{
+                        value: 'fdrevampxbrowser/public/Logo.jpg',
+                        formatter: 'sap.ui.require.toUrl'
+                        }" height="30px" width="100px" visible="true" />
                 </contentRight>
             </Bar>
         </customHeader>
