@@ -1,4 +1,4 @@
-name: Epta Build
+name: Epta Deploy
 
 on:
   push:
@@ -32,25 +32,25 @@ jobs:
         run: npm install
 
       - name: Build UI5 app
-        run: npm run build:uimodule
+        run: npm run build
 
-      - name: Prepare docs folder for GitHub Pages
+      - name: Move dist to docs (GitHub Pages expects this folder)
         run: |
-          mkdir -p docs
-          cp -r uimodule/dist/* docs/
+          mkdir docs
+          cp -r dist/* docs/
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
   deploy:
-    runs-on: ubuntu-latest
-    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

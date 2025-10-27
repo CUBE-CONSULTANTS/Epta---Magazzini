@@ -10,13 +10,15 @@
   "main": "webapp/index.html",
   "devDependencies": {
     "@sap/ux-ui5-tooling": "1",
-    "@ui5/cli": "^3.11.11"
+    "@ui5/cli": "^3.11.11",
+     "@sap-ux/ui5-middleware-fe-mockserver": "2",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fdrevampxbrowser-display\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fdrevampxbrowser-display\"",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
-    "deploy": "fiori verify",
+    "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml && rimraf archive.zip",
     "deploy-config": "fiori add deploy-config",
     "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
     "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
