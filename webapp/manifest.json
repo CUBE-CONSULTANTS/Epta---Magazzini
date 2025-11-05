@@ -76,12 +76,23 @@
         {
           "name": "RouteHome",
           "pattern": ":?query:",
-          "target": ["TargetHome"]
+          "target": [
+            "TargetHome"
+          ]
         },
         {
           "name": "Palletisation",
           "pattern": "Palletisation/{TYPE}",
-          "target": ["Palletisation"]
+          "target": [
+            "Palletisation"
+          ]
+        },
+        {
+          "name": "TrasferimentoMagazzino",
+          "pattern": "materiePrime/trasferimentoMagazzino",
+          "target": [
+            "TargetTrasferimentoMagazzino"
+          ]
         }
       ],
       "targets": {
@@ -92,6 +103,10 @@
         "Palletisation": {
           "id": "Palletisation",
           "name": "Palletisation"
+        },
+        "TargetTrasferimentoMagazzino": {
+          "id": "TrasferimentoMagazzino",
+          "name": "TrasferimentoMagazzino"
         }
       }
     },

@@ -1,0 +1,46 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified">
+    <Page showHeader="true"
+        enableScrolling="true"
+        id="trasferimento_magazzino">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press="onNavBack" />
+                    <Text text="Trasferimento Magazzino" />
+                </contentLeft>
+            </Bar>
+        </customHeader>
+        <content>
+            <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step1"
+                binding="{trasferimentoMagazzino>/step1}"
+                type="XML" />
+            <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step2"
+                binding="{trasferimentoMagazzino>/step2}"
+                type="XML" />
+                <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step3"
+                binding="{trasferimentoMagazzino>/step3}"
+                type="XML" />
+                <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step4"
+                binding="{trasferimentoMagazzino>/step4}"
+                type="XML" />
+        </content>
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer />
+                <Button text="Salva"
+                    type="Accept"
+                    icon="sap-icon://save" />
+                <Button text="Annulla"
+                    type="Reject"
+                    icon="sap-icon://decline"
+                    press="onNavBack" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</c:FragmentDefinition> 

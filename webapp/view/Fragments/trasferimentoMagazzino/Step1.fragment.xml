@@ -1,0 +1,47 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.viz.ui5.core"
+    xmlns:unified="sap.ui.unified">
+    <f:SimpleForm editable="true"
+        layout="ResponsiveGridLayout"
+        title="1. Trasferimento alla linea"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="4"
+        emptySpanS="0"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+            <Label design="Bold"
+                required="true"
+                text="Numero Magazzino" />
+            <Input showClearIcon="true"
+                change=".onTMStep1Change"
+                value="{trasferimentoMagazzino>magazzino/lgort}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Tipo Magazzino" />
+            <Input showClearIcon="true"
+                change=".onTMStep1Change"
+                value="{trasferimentoMagazzino>magazzino/tipo}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Codice Materiale" />
+            <Input showClearIcon="true"
+                change=".onTMStep1Change"
+                value="{trasferimentoMagazzino>materiale/matnr}" />
+        </f:content>
+    </f:SimpleForm>
+    <!-- </VBox> -->
+</c:FragmentDefinition>

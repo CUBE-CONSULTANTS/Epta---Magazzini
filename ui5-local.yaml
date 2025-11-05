@@ -10,7 +10,13 @@ framework:
   libraries:
     - name: sap.m
     - name: sap.ui.core
+    - name: sap.ui.dt
+    - name: sap.ui.rta
+    - name: sap.tnt
+    - name: sap.uxap
     - name: sap.ushell
+    - name: sap.ui.generic.template
+    - name: sap.suite.ui.generic.template
     - name: themelib_sap_horizon
 server:
   customMiddleware:

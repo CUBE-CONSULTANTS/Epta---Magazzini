@@ -1,0 +1,51 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.viz.ui5.core"
+    xmlns:unified="sap.ui.unified">
+    <f:SimpleForm editable="true"
+        visible="{trasferimentoMagazzino>enabled}"
+        layout="ResponsiveGridLayout"
+        title="3. Inserire centro di costo"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="4"
+        emptySpanS="0"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+            <Label design="Bold"
+                required="true"
+                text="Magazzino" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>magazzino/lgort} - {trasferimentoMagazzino>magazzino/tipo}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Materiale" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>materiale/matnr} - {trasferimentoMagazzino>materiale/maktx}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Ubicazione" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>materiale/vlpla}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Trasferimento tra magazzini" />
+            <Input change=".onTMStep3Change"
+                value="{trasferimentoMagazzino>new_magazzino/lgort}" />
+        </f:content>
+    </f:SimpleForm>
+    <!-- </VBox> -->
+</c:FragmentDefinition>

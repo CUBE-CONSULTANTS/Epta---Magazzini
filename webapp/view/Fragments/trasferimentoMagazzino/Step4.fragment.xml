@@ -1,0 +1,63 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.viz.ui5.core"
+    xmlns:unified="sap.ui.unified">
+    <f:SimpleForm editable="true"
+        visible="{trasferimentoMagazzino>enabled}"
+        layout="ResponsiveGridLayout"
+        title="4. Inserire la quantità"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="4"
+        emptySpanS="0"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+            <Label design="Bold"
+                required="true"
+                text="Divisione" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>magazzino/werks}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Magazzino" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>magazzino/lgort}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Trasferimento tra magazzini" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>new_magazzino/lgort}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Materiale" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>materiale/matnr} - {trasferimentoMagazzino>materiale/maktx}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Stock Disponibili" />
+            <Input editable="false"
+                value="{trasferimentoMagazzino>materiale/labst} {trasferimentoMagazzino>materiale/meins}" />
+
+            <Label design="Bold"
+                required="true"
+                text="Quantità" />
+            <Input editable="true"
+                value="{trasferimentoMagazzino>materiale/nsola}" />
+        </f:content>
+    </f:SimpleForm>
+    <!-- </VBox> -->
+</c:FragmentDefinition>
