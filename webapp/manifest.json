@@ -35,7 +35,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
-      "minUI5Version": "1.96.44",
+      "minUI5Version": "1.38.62",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {}
@@ -75,7 +75,7 @@
       "routes": [
         {
           "name": "RouteHome",
-          "pattern": "",
+          "pattern": ":?query:",
           "target": [
             "TargetHome"
           ]
