@@ -6,7 +6,6 @@
     xmlns:unified="sap.ui.unified">
     <f:SimpleForm editable="true"
         layout="ResponsiveGridLayout"
-        title="1. Trasferimento alla linea"
         labelSpanXL="3"
         labelSpanL="3"
         labelSpanM="3"
@@ -26,21 +25,21 @@
                 text="Numero Magazzino" />
             <Input showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{trasferimentoMagazzino>magazzino/lgort}" />
+                value="{ModelloUser>/info/Werks}" />
 
             <Label design="Bold"
                 required="true"
                 text="Tipo Magazzino" />
             <Input showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{trasferimentoMagazzino>magazzino/tipo}" />
+                value="{ModelloUser>/info/Lgtyp}" />
 
             <Label design="Bold"
                 required="true"
                 text="Codice Materiale" />
             <Input showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{trasferimentoMagazzino>materiale/matnr}" />
+                value="{ModelloUser>/info/Matnr}" />
         </f:content>
     </f:SimpleForm>
     <!-- </VBox> -->

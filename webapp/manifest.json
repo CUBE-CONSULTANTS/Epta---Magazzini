@@ -14,8 +14,20 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.16.3",
       "toolsId": "69951a3a-e57d-4a0b-9b70-0e18899704a1"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/SAP/Z_XBROWSER_RENEWAL_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
     }
   },
+  
   "sap.ui": {
     "technology": "UI5",
     "icons": {
@@ -32,6 +44,7 @@
       "phone": true
     }
   },
+  
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
@@ -51,7 +64,15 @@
         "settings": {
           "bundleName": "fdrevampxbrowser.i18n.i18n"
         }
-      }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true
+        }
+  }
     },
     "resources": {
       "css": [

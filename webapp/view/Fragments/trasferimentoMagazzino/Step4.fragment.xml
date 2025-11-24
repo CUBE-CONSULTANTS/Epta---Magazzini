@@ -1,13 +1,15 @@
-<c:FragmentDefinition xmlns="sap.m"
+<c:FragmentDefinition
+    xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.viz.ui5.core"
-    xmlns:unified="sap.ui.unified">
-    <f:SimpleForm editable="true"
-        visible="{trasferimentoMagazzino>enabled}"
+    xmlns:unified="sap.ui.unified"
+>
+    <f:SimpleForm
+        editable="true"
+        visible="true"
         layout="ResponsiveGridLayout"
-        title="4. Inserire la quantità"
         labelSpanXL="3"
         labelSpanL="3"
         labelSpanM="3"
@@ -20,43 +22,68 @@
         columnsXL="1"
         columnsL="1"
         columnsM="1"
-        singleContainerFullSize="false">
+        singleContainerFullSize="false"
+    >
         <f:content>
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Divisione" />
-            <Input editable="false"
-                value="{trasferimentoMagazzino>magazzino/werks}" />
+                text="Divisione"
+            />
+            <Input
+                editable="false"
+                value="{modelloTransf>/item/Lgnum}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Magazzino" />
-            <Input editable="false"
-                value="{trasferimentoMagazzino>magazzino/lgort}" />
+                text="Magazzino"
+            />
+            <Input
+                editable="false"
+                value="{modelloTransf>/Lgort}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Trasferimento tra magazzini" />
-            <Input editable="false"
-                value="{trasferimentoMagazzino>new_magazzino/lgort}" />
+                text="Trasferimento tra magazzini"
+            />
+            <Input
+                editable="false"
+                value="{modelloTransf>/new_mag}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Materiale" />
-            <Input editable="false"
-                value="{trasferimentoMagazzino>materiale/matnr} - {trasferimentoMagazzino>materiale/maktx}" />
+                text="Materiale"
+            />
+            <Input
+                editable="false"
+                value="{modelloTransf>/Matnr} - {modelloTransf>/Maktx}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Stock Disponibili" />
-            <Input editable="false"
-                value="{trasferimentoMagazzino>materiale/labst} {trasferimentoMagazzino>materiale/meins}" />
+                text="Stock Disponibili"
+            />
+            <Input
+                editable="false"
+                value="{modelloTransf>/item/VermeTxt}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Quantità" />
-            <Input editable="true"
-                value="{trasferimentoMagazzino>materiale/nsola}" />
+                text="Quantità"
+            />
+            <Input
+                editable="true"
+                value="{modelloTransf>/quantity}"
+            />
         </f:content>
     </f:SimpleForm>
     <!-- </VBox> -->

@@ -31,7 +31,7 @@
                         <tnt:NavigationListItem text="Immagazzinare" />
                         <tnt:NavigationListItem text="Visualizzare funzioni WM" />
                         <tnt:NavigationListItem text="Trasferimenti interni" />
-                        <tnt:NavigationListItem text="Trasf. ad altro magazzino" key="trasferimento_magazzino" />
+                        <tnt:NavigationListItem text="Trasf. ad altro magazzino" key="trasferimento_magazzino_wizard" />
                         <tnt:NavigationListItem text="Consumo a centro costo" />
                         <tnt:NavigationListItem text="Parametrare stampante" />
                         <tnt:NavigationListItem text="Conto lavoro" />
@@ -56,7 +56,7 @@
                     </Page>
                     <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Materiale" type="XML" />
                     <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Review" type="XML" />
-                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.TrasferimentoMagazzino" type="XML" />
+                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.TrasferimentoMagazzinoWizard" type="XML" />
                 </pages>
             </NavContainer>
         </tnt:mainContents>

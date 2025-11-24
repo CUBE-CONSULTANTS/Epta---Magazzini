@@ -1,15 +1,18 @@
-<c:FragmentDefinition xmlns="sap.m"
+<c:FragmentDefinition
+    xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.viz.ui5.core"
-    xmlns:unified="sap.ui.unified">
-    <FlexBox width="100%"
+    xmlns:unified="sap.ui.unified"
+>
+    <FlexBox
+        width="100%"
         direction="Column"
-        visible="{trasferimentoMagazzino>enabled}">
-        <f:SimpleForm editable="true"
+        visible="true"
+    >
+        <!-- <f:SimpleForm editable="true"
             layout="ResponsiveGridLayout"
-            title="2. Selezione magazzino di destinazione"
             labelSpanXL="3"
             labelSpanL="3"
             labelSpanM="3"
@@ -26,39 +29,109 @@
             <f:content>
                 <Label text="Materiale" />
                 <Input editable="false"
-                    value="{trasferimentoMagazzino>materiale/matnr} - {trasferimentoMagazzino>materiale/maktx}" />
+                    value="{trasferimentoModel>/0/Matnr} - {trasferimentoModel>/0/WmList/Maktx}" />
             </f:content>
-        </f:SimpleForm>
-        <ScrollContainer vertical="true"
+        </f:SimpleForm> -->
+        <ScrollContainer
+            vertical="true"
             width="100%"
-            height="200px">
-            <Table items="{trasferimentoMagazzino>list/items}"
+        >
+            <Table
+                items="{trasferimentoModel>/}"
                 selectionChange=".onTMStep2SelectionChange"
-                mode="SingleSelectLeft">
+                mode="SingleSelectLeft"
+            >
                 <columns>
-                    <Column>
-                        <Label design="Bold"
-                            text="Ubicazione" />
+                    <Column width="35%">
+                        <Label
+                            design="Bold"
+                            text="Ubicazione"
+                        />
                     </Column>
-                    <Column>
-                        <Label design="Bold"
-                            text="Stock" />
+                    <Column width="25%">
+                        <Label
+                            design="Bold"
+                            text="Stock"
+                        />
+                    </Column>
+                    <Column width="25%">
+                        <Label
+                            design="Bold"
+                            text="OdV"
+                        />
+                    </Column>
+                    <Column width="15%">
+                        <Label
+                            design="Bold"
+                            text="Pos"
+                        />
                     </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Title class="sapUiTinyMarginEnd"
-                                text="{trasferimentoMagazzino>vlpla}"
-                                titleStyle="H4" />
-                            <ObjectNumber number="{trasferimentoMagazzino>labst}"
-                                unit="{trasferimentoMagazzino>meins}"
-                                inverted="true"
-                                state="Success" />
+                            <Text
+                                class="sapUiTinyMarginEnd bold"
+                                text="{trasferimentoModel>WmList/Lgpla}"
+                            />
+                            <Text text="{trasferimentoModel>WmList/VermeTxt}" />
+                            <Text text="{trasferimentoModel>WmList/Aufnr}" />
+                            <Text text="{trasferimentoModel>WmList/AufnrPos}" />
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
+            <!-- <List
+                headerText="{trasferimentoModel>/0/Matnr} - {trasferimentoModel>/0/WmList/Maktx}"
+                mode="SingleSelectLeft"
+                items="{trasferimentoModel>/}"
+                selectionChange=".onTMStep2SelectionChange"
+            >
+                <CustomListItem>
+                    <VBox>
+                        <HBox
+                            justifyContent="SpaceAround"
+                            width="100%"
+                        >
+                            <VBox>
+                                <Label text="Ubicazione:" />
+                                <Title
+                                    text="{trasferimentoModel>WmList/Lgpla}"
+                                />
+                            </VBox>
+                            <VBox>
+                                <Label text="Stock:" />
+                                <ObjectNumber
+                                    number="{trasferimentoModel>WmList/VermeTxt}"
+                                    inverted="true"
+                                    state="Success"
+                                />
+                            </VBox>
+                        </HBox>
+                        <HBox
+                            justifyContent="SpaceAround"
+                            width="100%"
+                        >
+                            <VBox>
+                                <Label text="OdV:" />
+                                <ObjectNumber
+                                    number="{trasferimentoModel>WmList/Aufnr}"
+                                    inverted="true"
+                                    state="Warning"
+                                />
+                            </VBox>
+                            <VBox>
+                                <Label text="Pos:" />
+                                <ObjectNumber
+                                    number="{trasferimentoModel>WmList/AufnrPos}"
+                                    inverted="true"
+                                    state="Success"
+                                />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </CustomListItem>
+            </List> -->
         </ScrollContainer>
     </FlexBox>
 </c:FragmentDefinition>

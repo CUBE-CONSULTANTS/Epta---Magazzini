@@ -18,7 +18,7 @@
         </customHeader>
         <content>
             <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step1"
-                binding="{trasferimentoMagazzino>/step1}"
+                
                 type="XML" />
             <c:Fragment fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step2"
                 binding="{trasferimentoMagazzino>/step2}"
