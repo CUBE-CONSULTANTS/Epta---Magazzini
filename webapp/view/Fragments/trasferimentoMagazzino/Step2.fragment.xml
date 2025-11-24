@@ -42,7 +42,10 @@
                 mode="SingleSelectLeft"
             >
                 <columns>
-                    <Column width="35%">
+                    <Column
+                        width="35%"
+                        hAlign="Left"
+                    >
                         <Label
                             design="Bold"
                             text="Ubicazione"

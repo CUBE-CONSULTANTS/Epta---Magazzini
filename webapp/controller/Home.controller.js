@@ -250,6 +250,15 @@ sap.ui.define(
       gnegne: function () {
         debugger;
         console.log("dhfvvjkhfvekfhgeufegfilegerygerlgerò");
+        let { Lgort, Lgpla, Lgtyp, Maktx, Matnr, item, new_mag } = this.getView().getModel("modelloTransf").getData();
+
+        if (!Lgort || !Lgpla || !Lgtyp || !Maktx || !Matnr || !item || !new_mag) {
+          new sap.m.MessageBox.error("Per favore inserire gli elementi obbligatori");
+        } else {
+          let info = this.getView().getModel("ModelloUser").getProperty("/info");
+          let qta = this.getView().getModel("modelloTransf").getProperty("/quantity");
+          let userName = "ELENA";
+        }
       },
     });
   }
