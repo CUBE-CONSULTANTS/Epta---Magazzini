@@ -86,7 +86,7 @@
             </Wizard>
         </content>
         <footer>
-            <OverflowToolbar>
+            <OverflowToolbar visible="false">
                 <ToolbarSpacer />
                 <Button
                     text="Salva"

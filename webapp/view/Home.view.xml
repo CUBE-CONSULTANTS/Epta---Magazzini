@@ -1,65 +1,135 @@
-<mvc:View controllerName="fdrevampxbrowser.controller.Home"
+<mvc:View
+    controllerName="fdrevampxbrowser.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.f"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
     xmlns:form="sap.ui.layout.form"
     xmlns:tnt="sap.tnt"
-    xmlns="sap.m">
-
-    <tnt:ToolPage id="toolPage" sideExpanded="true">
+    xmlns="sap.m"
+>
+    <tnt:ToolPage
+        id="toolPage"
+        sideExpanded="true"
+    >
         <tnt:header>
             <tnt:ToolHeader>
-                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+                <Button
+                    id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress"
+                >
                     <layoutData>
                         <OverflowToolbarLayoutData priority="NeverOverflow" />
                     </layoutData>
                 </Button>
-                <Title text="EPTA"/>
+                <Title text="EPTA" />
                 <ToolbarSpacer />
-                <Image src="{
+                <Image
+                    src="{
                         value: 'fdrevampxbrowser/public/logo.png',
                         formatter: 'sap.ui.require.toUrl'
-                        }" height="30px" width="90px" visible="true" />
+                        }"
+                    height="30px"
+                    width="90px"
+                    visible="true"
+                    press="onNavBack"
+                />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
-            <tnt:SideNavigation id="sideNavigation" selectedKey="walked" expanded="false" itemSelect=".onQuickActionPress">
+            <tnt:SideNavigation
+                id="sideNavigation"
+                selectedKey="walked"
+                expanded="false"
+                itemSelect=".onQuickActionPress"
+            >
                 <tnt:NavigationList>
-                    <tnt:NavigationListItem text="Materie Prime" icon="sap-icon://building" selectable="true">
-                        <tnt:NavigationListItem text="Pallettizzazione" key="materiale"/>
+                    <tnt:NavigationListItem
+                        text="Materie Prime"
+                        icon="sap-icon://building"
+                        selectable="true"
+                    >
+                        <tnt:NavigationListItem
+                            text="Pallettizzazione"
+                            key="materiale"
+                        />
                         <tnt:NavigationListItem text="Immagazzinare" />
-                        <tnt:NavigationListItem text="Visualizzare funzioni WM" />
+                        <tnt:NavigationListItem
+                            text="Visualizzare funzioni WM"
+                        />
                         <tnt:NavigationListItem text="Trasferimenti interni" />
-                        <tnt:NavigationListItem text="Trasf. ad altro magazzino" key="trasferimento_magazzino_wizard" />
+                        <tnt:NavigationListItem
+                            text="Trasf. ad altro magazzino"
+                            key="trasferimento_magazzino_wizard"
+                        />
                         <tnt:NavigationListItem text="Consumo a centro costo" />
                         <tnt:NavigationListItem text="Parametrare stampante" />
                         <tnt:NavigationListItem text="Conto lavoro" />
-                        <tnt:NavigationListItem text="Conferma lista prelievo" />
+                        <tnt:NavigationListItem
+                            text="Conferma lista prelievo"
+                        />
                     </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Semilavorati" icon="sap-icon://mileage" selectable="true"/>
-                    <tnt:NavigationListItem text="Conferma di Produzione" icon="sap-icon://accept" selectable="true"/>
-                    <tnt:NavigationListItem text="Production manual transfer" icon="sap-icon://shipping-status" selectable="true"/>
+                    <tnt:NavigationListItem
+                        text="Semilavorati"
+                        icon="sap-icon://mileage"
+                        selectable="true"
+                    />
+                    <tnt:NavigationListItem
+                        text="Conferma di Produzione"
+                        icon="sap-icon://accept"
+                        selectable="true"
+                    />
+                    <tnt:NavigationListItem
+                        text="Production manual transfer"
+                        icon="sap-icon://shipping-status"
+                        selectable="true"
+                    />
                 </tnt:NavigationList>
             </tnt:SideNavigation>
         </tnt:sideContent>
         <tnt:mainContents>
-            <NavContainer id="pageContainer" initialPage="page2">
+            <NavContainer
+                id="pageContainer"
+                initialPage="page2"
+            >
                 <pages>
-                    <Page showHeader="false" enableScrolling="false">
-                        <VBox width="100%" height="100%" alignItems="Center" justifyContent="Center">
-                            <Image src="{
+                    <Page
+                        showHeader="false"
+                        enableScrolling="false"
+                    >
+                        <VBox
+                            width="100%"
+                            height="100%"
+                            alignItems="Center"
+                            justifyContent="Center"
+                        >
+                            <Image
+                                src="{
                                     value: 'fdrevampxbrowser/public/Logo-epta.png',
                                     formatter: 'sap.ui.require.toUrl'
-                                    }" width="100%" height="100%" decorative="false" />
+                                    }"
+                                width="100%"
+                                height="100%"
+                                decorative="false"
+                            />
                         </VBox>
                     </Page>
-                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Materiale" type="XML" />
-                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.Review" type="XML" />
-                    <core:Fragment fragmentName="fdrevampxbrowser.view.Pages.TrasferimentoMagazzinoWizard" type="XML" />
+                    <core:Fragment
+                        fragmentName="fdrevampxbrowser.view.Pages.Materiale"
+                        type="XML"
+                    />
+                    <core:Fragment
+                        fragmentName="fdrevampxbrowser.view.Pages.Review"
+                        type="XML"
+                    />
+                    <core:Fragment
+                        fragmentName="fdrevampxbrowser.view.Pages.TrasferimentoMagazzinoWizard"
+                        type="XML"
+                    />
                 </pages>
             </NavContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
-
 </mvc:View>
