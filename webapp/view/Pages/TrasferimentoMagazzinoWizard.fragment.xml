@@ -40,7 +40,7 @@
                 class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
                 complete="gnegne"
                 renderMode="Page"
-                finishButtonText="dsfsg"
+                finishButtonText="Invia"
                 showNextButton="true"
             >
                 <WizardStep

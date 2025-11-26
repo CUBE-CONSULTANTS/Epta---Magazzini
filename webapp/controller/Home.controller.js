@@ -262,7 +262,6 @@ sap.ui.define(
             Umlgo: new_mag,
             Menge: qta,
             User: userName,
-            Matnr: Matnr,
           };
 
           let response = await this._postHanaData("/BookBulk", data);
