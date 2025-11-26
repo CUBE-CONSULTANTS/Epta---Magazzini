@@ -152,6 +152,20 @@ sap.ui.define(
           });
         });
       },
+
+      _postHanaData: function (Entity, oData) {
+        var xsoDataModelReport = this.getOwnerComponent().getModel();
+        return new Promise(function (resolve, reject) {
+          xsoDataModelReport.create(Entity, oData, {
+            success: function (oDataReturned, oResponse) {
+              resolve(oDataReturned);
+            },
+            error: function (error) {
+              reject(console.log("error calling hana DB", error));
+            },
+          });
+        });
+      },
     });
   }
 );

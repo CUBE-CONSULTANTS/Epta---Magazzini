@@ -40,30 +40,28 @@
                 items="{trasferimentoModel>/}"
                 selectionChange=".onTMStep2SelectionChange"
                 mode="SingleSelectLeft"
+                autoPopinMode="true"
             >
                 <columns>
-                    <Column
-                        width="35%"
-                        hAlign="Left"
-                    >
+                    <Column width="85px">
                         <Label
                             design="Bold"
                             text="Ubicazione"
                         />
                     </Column>
-                    <Column width="25%">
+                    <Column>
                         <Label
                             design="Bold"
                             text="Stock"
                         />
                     </Column>
-                    <Column width="25%">
+                    <Column>
                         <Label
                             design="Bold"
                             text="OdV"
                         />
                     </Column>
-                    <Column width="15%">
+                    <Column>
                         <Label
                             design="Bold"
                             text="Pos"

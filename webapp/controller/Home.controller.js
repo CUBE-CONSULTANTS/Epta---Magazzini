@@ -247,9 +247,7 @@ sap.ui.define(
         //   });
       },
 
-      gnegne: function () {
-        debugger;
-        console.log("dhfvvjkhfvekfhgeufegfilegerygerlgerò");
+      gnegne: async function () {
         let { Lgort, Lgpla, Lgtyp, Maktx, Matnr, item, new_mag } = this.getView().getModel("modelloTransf").getData();
 
         if (!Lgort || !Lgpla || !Lgtyp || !Maktx || !Matnr || !item || !new_mag) {
@@ -258,6 +256,16 @@ sap.ui.define(
           let info = this.getView().getModel("ModelloUser").getProperty("/info");
           let qta = this.getView().getModel("modelloTransf").getProperty("/quantity");
           let userName = "ELENA";
+          let data = {
+            Info: info,
+            Wmlist: item,
+            Umlgo: new_mag,
+            Menge: qta,
+            User: userName,
+          };
+
+          let response = await this._postHanaData("/BookBulk", data);
+          console.log(response);
         }
       },
     });
