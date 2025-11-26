@@ -9,6 +9,7 @@
         showHeader="true"
         enableScrolling="true"
         id="trasferimento_magazzino_wizard"
+        showFooter="false"
     >
         <customHeader>
             <Bar>
