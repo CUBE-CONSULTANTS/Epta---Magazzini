@@ -1,3 +1,8 @@
 .bold {
   font-weight: bold;
 }
+
+.sapMWizardNextButtonVisible {
+  padding-top: 40px !important;
+  bottom: 1 !important;
+}
