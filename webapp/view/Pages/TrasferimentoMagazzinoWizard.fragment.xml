@@ -38,7 +38,7 @@
                 type="XML" /> -->
             <Wizard
                 id="wizardTrasferimento"
-                class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                class="sapUiResponsivePadding--header sapUiResponsivePadding--content changecolor"
                 complete="gnegne"
                 renderMode="Page"
                 finishButtonText="Invia"

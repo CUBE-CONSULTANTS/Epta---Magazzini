@@ -6,3 +6,7 @@
   padding-top: 40px !important;
   bottom: 1 !important;
 }
+
+.changecolor > section {
+  background-color: white !important;
+}
