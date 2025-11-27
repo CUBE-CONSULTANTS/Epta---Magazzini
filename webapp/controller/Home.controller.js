@@ -22,6 +22,9 @@ sap.ui.define(
         let info;
         let self = this;
 
+        // dati mok da cancellare
+        self.getView().setModel(models._mokGetInfo(), "ModelloUser");
+
         xsoDataModelReport.read("/GetInfo(User='MHD_RM_3980')", {
           success: function (oDataIn, oResponse) {
             info = oDataIn.Info;
@@ -163,9 +166,11 @@ sap.ui.define(
         //   }),
         // ];
 
-        let materiali = await this._getHanaData("/GetQuantity", aFilters);
-        console.log(materiali);
-        this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+        // let materiali = await this._getHanaData("/GetQuantity", aFilters);
+        // console.log(materiali);
+        // this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+        // dati mok da cancellare
+        this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
         //...
       },

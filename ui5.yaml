@@ -19,10 +19,10 @@ server:
         backend:
           - path: /sap/opu/odata/sap/
             url: https://swd.eptarefrigeration.com:3000
-            client: "400"
-            authenticationType: BasicAuthentication
-            username: MHD_RM_3980
-            password: EptaProject24!
+            # client: "400"
+            # authenticationType: BasicAuthentication
+            # username: MHD_RM_3980
+            # password: EptaProject24!
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
