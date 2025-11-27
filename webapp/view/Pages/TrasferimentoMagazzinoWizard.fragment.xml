@@ -46,7 +46,7 @@
             >
                 <WizardStep
                     title="Trasferimento alla linea"
-                    validated="true"
+                    validated="false"
                     id="trasferimento_linea"
                 >
                     <c:Fragment
@@ -56,7 +56,7 @@
                 </WizardStep>
                 <WizardStep
                     title="Selezione magazzino di destinazione"
-                    validated="true"
+                    validated="false"
                     id="magazino_dest"
                 >
                     <c:Fragment
@@ -66,7 +66,7 @@
                 </WizardStep>
                 <WizardStep
                     title="Inserimento centro di costo"
-                    validated="true"
+                    validated="false"
                     id="centro_costo"
                 >
                     <c:Fragment

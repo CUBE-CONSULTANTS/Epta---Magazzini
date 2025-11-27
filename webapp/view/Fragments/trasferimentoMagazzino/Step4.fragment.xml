@@ -81,6 +81,7 @@
                 text="Quantità"
             />
             <Input
+                change=".onTMStep4Change"
                 editable="true"
                 value="{modelloTransf>/quantity}"
             />

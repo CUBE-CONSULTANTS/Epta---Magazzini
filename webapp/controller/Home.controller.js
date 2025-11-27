@@ -131,15 +131,25 @@ sap.ui.define(
       },
 
       async onTMStep1Change() {
-        const enabled = this._tmEnableStep2();
+        // const enabled = this._tmEnableStep2();
 
-        if (!enabled) return;
+        // if (!enabled) return;
 
         // this.getView().getModel("trasferimentoMagazzino").setProperty("/step2/enabled", enabled);
 
-        //api call
+        // validazione step
         let matnr = this.getView().getModel("ModelloUser").getProperty("/info/Matnr");
         let info = this.getView().getModel("ModelloUser").getProperty("/info");
+        let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
+
+        if (matnr && info.Werks && info.Lgtyp) {
+          step.setValidated(true);
+        } else {
+          step.setValidated(false);
+        }
+
+        //api call
+
         //    new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, sMatnr),
         // new sap.ui.model.Filter("Info/Werks", sap.ui.model.FilterOperator.EQ, sWerks),
         // new sap.ui.model.Filter("Info/Lgort", sap.ui.model.FilterOperator.EQ, sLgort)
@@ -177,8 +187,13 @@ sap.ui.define(
 
       onTMStep2SelectionChange(e) {
         const { listItem } = e.getParameters();
+        let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 
-        if (!listItem) return;
+        if (listItem) {
+          step.setValidated(true);
+        } else {
+          step.setValidated(false);
+        }
 
         let itemMat = listItem.getBindingContext("trasferimentoModel").getObject();
 
@@ -218,9 +233,14 @@ sap.ui.define(
 
       onTMStep3Change() {
         const wizard = this.byId("wizardTrasferimento");
-        const step = this.byId("quantita");
+        let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 
-        wizard.validateStep(step);
+        if (this.getView().getModel("modelloTransf").getProperty("/new_mag") && this.getView().getModel("modelloTransf").getProperty("/new_mag") != "") {
+          step.setValidated(true);
+        } else {
+          step.setValidated(false);
+        }
+
         // const enabled = this._tmEnableStep4();
         // if (!enabled) return;
         // this.getView().getModel("trasferimentoMagazzino").setProperty("/step4/enabled", enabled);
@@ -250,6 +270,16 @@ sap.ui.define(
         //       tipo: new_magazzino.tipo,
         //     },
         //   });
+      },
+
+      onTMStep4Change() {
+        let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
+
+        if (this.getView().getModel("modelloTransf").getProperty("/quantity") && this.getView().getModel("modelloTransf").getProperty("/quantity") != "") {
+          step.setValidated(true);
+        } else {
+          step.setValidated(false);
+        }
       },
 
       gnegne: async function () {
