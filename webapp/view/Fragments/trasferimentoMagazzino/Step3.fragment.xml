@@ -63,6 +63,7 @@
             <Input
                 change=".onTMStep3Change"
                 value="{modelloTransf>/new_mag}"
+                id="new_mag"
             />
         </f:content>
     </f:SimpleForm>

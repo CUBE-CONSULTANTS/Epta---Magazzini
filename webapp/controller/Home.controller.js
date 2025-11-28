@@ -314,6 +314,32 @@ sap.ui.define(
           console.log(response);
         }
       },
+
+      onStepActivate: function (oEvent) {
+        debugger;
+
+        if (this.byId("toolPage").getSideExpanded()) {
+          this.onSideNavButtonPress();
+        }
+
+        let stepId = oEvent.getSource().getId().split("--").pop();
+        const oMap = {
+          trasferimento_linea: "Matnr",
+          centro_costo: "new_mag",
+          quantita: "quantity",
+        };
+        let inputId = oMap[stepId];
+        let input = this.byId(inputId);
+
+        setTimeout(function () {
+          input.$().find("input").focus();
+          input.$().find("input").attr("readonly", true);
+          setTimeout(function () {
+            // Remove readonly attribute after keyboard is hidden.
+            input.$().find("input").removeAttr("readonly");
+          }, 300);
+        }, 300);
+      },
     });
   }
 );

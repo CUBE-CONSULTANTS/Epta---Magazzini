@@ -48,6 +48,7 @@
                     title="Trasferimento alla linea"
                     validated="false"
                     id="trasferimento_linea"
+                    activate="onStepActivate"
                 >
                     <c:Fragment
                         fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step1"
@@ -68,6 +69,7 @@
                     title="Inserimento centro di costo"
                     validated="false"
                     id="centro_costo"
+                    activate="onStepActivate"
                 >
                     <c:Fragment
                         fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step3"
@@ -78,6 +80,7 @@
                     title="Inserimento quantità"
                     validated="false"
                     id="quantita"
+                    activate="onStepActivate"
                 >
                     <c:Fragment
                         fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step4"

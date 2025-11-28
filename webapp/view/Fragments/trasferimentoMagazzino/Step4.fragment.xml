@@ -84,6 +84,7 @@
                 change=".onTMStep4Change"
                 editable="true"
                 value="{modelloTransf>/quantity}"
+                id="quantity"
             />
         </f:content>
     </f:SimpleForm>

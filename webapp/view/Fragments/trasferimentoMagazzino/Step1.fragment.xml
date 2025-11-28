@@ -1,10 +1,13 @@
-<c:FragmentDefinition xmlns="sap.m"
+<c:FragmentDefinition
+    xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.viz.ui5.core"
-    xmlns:unified="sap.ui.unified">
-    <f:SimpleForm editable="true"
+    xmlns:unified="sap.ui.unified"
+>
+    <f:SimpleForm
+        editable="true"
         layout="ResponsiveGridLayout"
         labelSpanXL="3"
         labelSpanL="3"
@@ -18,28 +21,42 @@
         columnsXL="1"
         columnsL="1"
         columnsM="1"
-        singleContainerFullSize="false">
+        singleContainerFullSize="false"
+    >
         <f:content>
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Numero Magazzino" />
-            <Input showClearIcon="true"
+                text="Numero Magazzino"
+            />
+            <Input
+                showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Werks}" />
+                value="{ModelloUser>/info/Werks}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Tipo Magazzino" />
-            <Input showClearIcon="true"
+                text="Tipo Magazzino"
+            />
+            <Input
+                showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Lgtyp}" />
+                value="{ModelloUser>/info/Lgtyp}"
+            />
 
-            <Label design="Bold"
+            <Label
+                design="Bold"
                 required="true"
-                text="Codice Materiale" />
-            <Input showClearIcon="true"
+                text="Codice Materiale"
+            />
+            <Input
+                showClearIcon="true"
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Matnr}" />
+                value="{ModelloUser>/info/Matnr}"
+                id="Matnr"
+            />
         </f:content>
     </f:SimpleForm>
     <!-- </VBox> -->
