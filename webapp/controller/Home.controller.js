@@ -182,6 +182,9 @@ sap.ui.define(
         // dati mok da cancellare
         this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
+        if (step.getValidated()) {
+          step._oNextButton.firePress();
+        }
         //...
       },
 
@@ -229,6 +232,10 @@ sap.ui.define(
           quantity: "",
         };
         this.getView().setModel(new JSONModel(model), "modelloTransf");
+
+        if (step.getValidated()) {
+          step._oNextButton.firePress();
+        }
       },
 
       onTMStep3Change() {
@@ -270,6 +277,10 @@ sap.ui.define(
         //       tipo: new_magazzino.tipo,
         //     },
         //   });
+
+        if (step.getValidated()) {
+          step._oNextButton.firePress();
+        }
       },
 
       onTMStep4Change() {

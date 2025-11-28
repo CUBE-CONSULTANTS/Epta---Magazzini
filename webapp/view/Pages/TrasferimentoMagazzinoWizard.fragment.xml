@@ -41,7 +41,7 @@
                 class="sapUiResponsivePadding--header sapUiResponsivePadding--content changecolor"
                 complete="gnegne"
                 renderMode="Page"
-                finishButtonText="Invia"
+                finishButtonText="Salva"
                 showNextButton="true"
             >
                 <WizardStep
