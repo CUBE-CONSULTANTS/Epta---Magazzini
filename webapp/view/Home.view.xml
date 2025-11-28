@@ -34,7 +34,7 @@
                     height="30px"
                     width="90px"
                     visible="true"
-                    press="onNavBack"
+                    press="toHome"
                 />
             </tnt:ToolHeader>
         </tnt:header>

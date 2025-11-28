@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["sap/ui/core/Fragment", "./BaseController", "../model/models", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel"],
-  (Fragment, BaseController, models, Filter, FilterOperator, JSONModel) => {
+  ["sap/ui/core/Fragment", "./BaseController", "../model/models", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/json/JSONModel", "sap/m/MessageBox"],
+  (Fragment, BaseController, models, Filter, FilterOperator, JSONModel, MessageBox) => {
     "use strict";
 
     return BaseController.extend("fdrevampxbrowser.controller.Home", {
@@ -313,6 +313,7 @@ sap.ui.define(
             User: userName,
           };
 
+          MessageBox.success("Materiale trasportato con successo!");
           let response = await this._postHanaData("/BookBulk", data);
           console.log(response);
         }

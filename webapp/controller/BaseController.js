@@ -36,6 +36,11 @@ sap.ui.define(
         const oRouter = this.getOwnerComponent().getRouter();
         oRouter.navTo("RouteHome");
       },
+
+      toHome: function () {
+        this.byId("pageContainer").to("__page0");
+      },
+
       onChangeSelectMaterial: function (oEvent) {
         const itemsSelected = oEvent.getSource().getSelectedItems();
         if (itemsSelected.length != 0) {
