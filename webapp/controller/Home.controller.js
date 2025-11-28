@@ -61,6 +61,9 @@ sap.ui.define(
         //debugger
         var oItem = oEvent.getParameter("item");
         this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
+        if (this.byId("toolPage").getSideExpanded()) {
+          this.byId("toolPage").setSideExpanded(false);
+        }
       },
       onCollapseExpandPress: function () {
         const oSideNavigation = this.byId("sideNavigation"),
@@ -317,10 +320,6 @@ sap.ui.define(
 
       onStepActivate: function (oEvent) {
         debugger;
-
-        if (this.byId("toolPage").getSideExpanded()) {
-          this.onSideNavButtonPress();
-        }
 
         let stepId = oEvent.getSource().getId().split("--").pop();
         const oMap = {
