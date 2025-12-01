@@ -185,9 +185,9 @@ sap.ui.define(
         // dati mok da cancellare
         this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
-        if (step.getValidated()) {
-          step._oNextButton.firePress();
-        }
+        // if (step.getValidated()) {
+        //   step._oNextButton.firePress();
+        // }
         //...
       },
 
@@ -236,9 +236,9 @@ sap.ui.define(
         };
         this.getView().setModel(new JSONModel(model), "modelloTransf");
 
-        if (step.getValidated()) {
-          step._oNextButton.firePress();
-        }
+        // if (step.getValidated()) {
+        //   step._oNextButton.firePress();
+        // }
       },
 
       onTMStep3Change() {
@@ -281,9 +281,9 @@ sap.ui.define(
         //     },
         //   });
 
-        if (step.getValidated()) {
-          step._oNextButton.firePress();
-        }
+        // if (step.getValidated()) {
+        //   step._oNextButton.firePress();
+        // }
       },
 
       onTMStep4Change() {
