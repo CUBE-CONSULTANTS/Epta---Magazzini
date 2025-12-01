@@ -56,7 +56,6 @@
                     />
                 </WizardStep>
                 <WizardStep
-                    title="Selezione magazzino di destinazione"
                     validated="false"
                     id="magazino_dest"
                 >
@@ -66,7 +65,6 @@
                     />
                 </WizardStep>
                 <WizardStep
-                    title="Inserimento centro di costo"
                     validated="false"
                     id="centro_costo"
                     activate="onStepActivate"
@@ -77,7 +75,6 @@
                     />
                 </WizardStep>
                 <WizardStep
-                    title="Inserimento quantità"
                     validated="false"
                     id="quantita"
                     activate="onStepActivate"
