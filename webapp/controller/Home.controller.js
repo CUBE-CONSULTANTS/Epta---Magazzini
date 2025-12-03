@@ -134,6 +134,7 @@ sap.ui.define(
       },
 
       async onTMStep1Change() {
+        this.byId("wizardTrasferimento").discardProgress(this.byId("trasferimento_linea"));
         // const enabled = this._tmEnableStep2();
 
         // if (!enabled) return;
@@ -192,6 +193,7 @@ sap.ui.define(
       },
 
       onTMStep2SelectionChange(e) {
+        this.byId("wizardTrasferimento").discardProgress(this.byId("magazino_dest"));
         const { listItem } = e.getParameters();
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 
@@ -242,6 +244,7 @@ sap.ui.define(
       },
 
       onTMStep3Change() {
+        this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
         const wizard = this.byId("wizardTrasferimento");
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 

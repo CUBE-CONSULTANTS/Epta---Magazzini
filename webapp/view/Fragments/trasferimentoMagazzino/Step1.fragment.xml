@@ -30,7 +30,6 @@
                 text="Numero Magazzino"
             />
             <Input
-                showClearIcon="true"
                 change=".onTMStep1Change"
                 value="{ModelloUser>/info/Werks}"
             />
@@ -41,7 +40,6 @@
                 text="Tipo Magazzino"
             />
             <Input
-                showClearIcon="true"
                 change=".onTMStep1Change"
                 value="{ModelloUser>/info/Lgtyp}"
             />
@@ -52,7 +50,6 @@
                 text="Codice Materiale"
             />
             <Input
-                showClearIcon="true"
                 change=".onTMStep1Change"
                 value="{ModelloUser>/info/Matnr}"
                 id="Matnr"
