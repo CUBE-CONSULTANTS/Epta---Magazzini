@@ -350,15 +350,22 @@ sap.ui.define(
           let userName = "ELENA";
           let data = {
             Info: info,
-            Wmlist: item,
+            WmList: item,
             Umlgo: new_mag,
             Menge: qta,
             User: userName,
           };
 
+          delete data.Info.Matnr;
           // MessageBox.success("Materiale trasportato con successo!");
           let response = await this._postHanaData("/BookBulk", data);
           console.log(response);
+
+          if (response.statusCode == "400") {
+            MessageBox.error(JSON.parse(response.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(response.responseText).error.code}` });
+          } else {
+            MessageBox.success("Materiale trasferito!");
+          }
         }
       },
 

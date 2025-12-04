@@ -166,7 +166,8 @@ sap.ui.define(
               resolve(oDataReturned);
             },
             error: function (error) {
-              reject(console.log("error calling hana DB", error));
+              // reject(console.log("error calling hana DB", error));
+              resolve(error);
             },
           });
         });
