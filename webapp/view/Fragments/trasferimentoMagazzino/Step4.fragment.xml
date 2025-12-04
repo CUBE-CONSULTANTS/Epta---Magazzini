@@ -85,6 +85,7 @@
                 editable="true"
                 value="{modelloTransf>/quantity}"
                 id="quantity"
+                type="Number"
             />
         </f:content>
     </f:SimpleForm>
