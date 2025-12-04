@@ -291,12 +291,13 @@ sap.ui.define(
 
       onTMStep3LiveChange(oEvent) {
         debugger;
+        let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
         if (oEvent.getSource().getValue().length === 4) {
           this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
 
-          let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
-
           step.setValidated(true);
+        } else {
+          step.setValidated(false);
         }
       },
 
