@@ -289,6 +289,17 @@ sap.ui.define(
         // }
       },
 
+      onTMStep3LiveChange(oEvent) {
+        debugger;
+        if (oEvent.getSource().getValue().length === 4) {
+          this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
+
+          let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
+
+          step.setValidated(true);
+        }
+      },
+
       onTMStep4Change() {
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 

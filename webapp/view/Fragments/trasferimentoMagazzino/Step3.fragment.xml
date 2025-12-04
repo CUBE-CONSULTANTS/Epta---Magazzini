@@ -61,7 +61,7 @@
                 text="Trasferimento tra magazzini"
             />
             <Input
-                change=".onTMStep3Change"
+                liveChange=".onTMStep3LiveChange"
                 value="{modelloTransf>/new_mag}"
                 id="new_mag"
             />
