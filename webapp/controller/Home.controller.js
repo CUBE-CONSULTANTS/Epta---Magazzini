@@ -148,6 +148,13 @@ sap.ui.define(
 
         if (matnr && info.Werks && info.Lgtyp) {
           step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 100);
         } else {
           step.setValidated(false);
         }
@@ -199,6 +206,13 @@ sap.ui.define(
 
         if (listItem) {
           step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 100);
         } else {
           step.setValidated(false);
         }
@@ -250,6 +264,13 @@ sap.ui.define(
 
         if (this.getView().getModel("modelloTransf").getProperty("/new_mag") && this.getView().getModel("modelloTransf").getProperty("/new_mag") != "") {
           step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 100);
         } else {
           step.setValidated(false);
         }
@@ -296,6 +317,13 @@ sap.ui.define(
           this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
 
           step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 100);
         } else {
           step.setValidated(false);
         }
