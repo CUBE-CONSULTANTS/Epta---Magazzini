@@ -18,7 +18,7 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap/opu/odata/sap/
-            url: https://swd.eptarefrigeration.com:2000
+            url: https://swd.eptarefrigeration.com:3000
             # client: "400"
             # authenticationType: BasicAuthentication
             # username: MHD_RM_3980

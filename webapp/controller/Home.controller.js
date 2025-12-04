@@ -23,7 +23,7 @@ sap.ui.define(
         let self = this;
 
         // dati mok da cancellare
-        self.getView().setModel(models._mokGetInfo(), "ModelloUser");
+        // self.getView().setModel(models._mokGetInfo(), "ModelloUser");
 
         xsoDataModelReport.read("/GetInfo(User='MHD_RM_3980')", {
           success: function (oDataIn, oResponse) {
@@ -187,11 +187,11 @@ sap.ui.define(
         //   }),
         // ];
 
-        // let materiali = await this._getHanaData("/GetQuantity", aFilters);
-        // console.log(materiali);
-        // this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+        let materiali = await this._getHanaData("/GetQuantity", aFilters);
+        console.log(materiali);
+        this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
         // dati mok da cancellare
-        this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
+        // this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
         // if (step.getValidated()) {
         //   step._oNextButton.firePress();
@@ -356,7 +356,7 @@ sap.ui.define(
             User: userName,
           };
 
-          MessageBox.success("Materiale trasportato con successo!");
+          // MessageBox.success("Materiale trasportato con successo!");
           let response = await this._postHanaData("/BookBulk", data);
           console.log(response);
         }
