@@ -25,14 +25,18 @@ sap.ui.define(
         // dati mok da cancellare
         // self.getView().setModel(models._mokGetInfo(), "ModelloUser");
 
+        let oView = this.getView();
+        oView.setBusy(true);
         xsoDataModelReport.read("/GetInfo(User='MHD_RM_3980')", {
           success: function (oDataIn, oResponse) {
             info = oDataIn.Info;
             user = oDataIn.User;
             self.getView().setModel(new sap.ui.model.json.JSONModel({ info: info, user: user }), "ModelloUser");
+            oView.setBusy(false);
           },
           error: function (error) {
             console.log("error calling hana DB", error);
+            oView.setBusy(false);
           },
         });
       },
@@ -135,6 +139,7 @@ sap.ui.define(
 
       async onTMStep1Change() {
         this.byId("wizardTrasferimento").discardProgress(this.byId("trasferimento_linea"));
+        let oView = this.getView();
         // const enabled = this._tmEnableStep2();
 
         // if (!enabled) return;
@@ -145,19 +150,6 @@ sap.ui.define(
         let matnr = this.getView().getModel("ModelloUser").getProperty("/info/Matnr");
         let info = this.getView().getModel("ModelloUser").getProperty("/info");
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
-
-        if (matnr && info.Werks && info.Lgtyp) {
-          step.setValidated(true);
-          setTimeout(() => {
-            let oWizard = this.byId("wizardTrasferimento");
-            let oNextButton = oWizard._getNextButton();
-            if (oNextButton) {
-              oNextButton.setText("Continua");
-            }
-          }, 100);
-        } else {
-          step.setValidated(false);
-        }
 
         //api call
 
@@ -187,9 +179,24 @@ sap.ui.define(
         //   }),
         // ];
 
+        oView.setBusy(true);
         let materiali = await this._getHanaData("/GetQuantity", aFilters);
         console.log(materiali);
         this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+        oView.setBusy(false);
+
+        if (matnr && info.Werks && info.Lgtyp) {
+          step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 100);
+        } else {
+          step.setValidated(false);
+        }
         // dati mok da cancellare
         // this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
@@ -358,8 +365,10 @@ sap.ui.define(
 
           delete data.Info.Matnr;
           // MessageBox.success("Materiale trasportato con successo!");
+          this.getView().setBusy(true);
           let response = await this._postHanaData("/BookBulk", data);
           console.log(response);
+          this.getView().setBusy(false);
 
           if (response.statusCode == "400") {
             MessageBox.error(JSON.parse(response.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(response.responseText).error.code}` });
