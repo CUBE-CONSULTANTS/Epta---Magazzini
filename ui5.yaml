@@ -19,6 +19,8 @@ server:
         backend:
           - path: /sap/opu/odata/sap/
             url: https://swd.eptarefrigeration.com:3000
+            # vhepxqasci.rise.epta.internal:8061
+            #
             # client: "400"
             # authenticationType: BasicAuthentication
             # username: MHD_RM_3980

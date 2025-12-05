@@ -318,7 +318,7 @@ sap.ui.define(
       },
 
       onTMStep3LiveChange(oEvent) {
-        debugger;
+        // debugger;
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
         if (oEvent.getSource().getValue().length === 4) {
           this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
@@ -379,7 +379,7 @@ sap.ui.define(
       },
 
       onStepActivate: function (oEvent) {
-        debugger;
+        // debugger;
 
         let stepId = oEvent.getSource().getId().split("--").pop();
         const oMap = {
