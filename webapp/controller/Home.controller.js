@@ -373,7 +373,7 @@ sap.ui.define(
           if (response.statusCode == "400") {
             MessageBox.error(JSON.parse(response.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(response.responseText).error.code}` });
           } else {
-            MessageBox.success("Materiale trasferito!");
+            MessageBox.success("Registrazione effettuata.");
           }
         }
       },

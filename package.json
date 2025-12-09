@@ -11,8 +11,9 @@
   "devDependencies": {
     "@sap/ux-ui5-tooling": "1",
     "@ui5/cli": "^3.11.11",
-     "@sap-ux/ui5-middleware-fe-mockserver": "2",
-    "rimraf": "^5.0.5"
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
+    "rimraf": "^5.0.5",
+    "ui5-middleware-route-proxy": "^1.0.10"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#fdrevampxbrowser-display\"",
