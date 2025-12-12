@@ -152,7 +152,7 @@ sap.ui.define(
               resolve(oDataIn.results);
             },
             error: function (error) {
-              reject(console.log("error calling hana DB", error));
+              resolve(error);
             },
           });
         });

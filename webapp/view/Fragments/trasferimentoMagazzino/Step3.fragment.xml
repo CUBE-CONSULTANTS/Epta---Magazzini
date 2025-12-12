@@ -59,11 +59,26 @@
                 design="Bold"
                 required="true"
                 text="Trasferimento tra magazzini"
+                visible="{= !${modelloTransf>/cdc} }"
             />
             <Input
-                liveChange=".onTMStep3LiveChange"
+                change=".onTMStep3Change"
                 value="{modelloTransf>/new_mag}"
                 id="new_mag"
+                visible="{= !${modelloTransf>/cdc} }"
+            />
+
+            <Label
+                design="Bold"
+                required="true"
+                text="Centro di costo"
+                visible="{modelloTransf>/cdc}"
+            />
+            <Input
+                change=".onTMStep3Change"
+                value="{modelloTransf>/new_mag}"
+                id="new_mag2"
+                visible="{modelloTransf>/cdc}"
             />
         </f:content>
     </f:SimpleForm>

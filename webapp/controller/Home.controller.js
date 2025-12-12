@@ -182,21 +182,29 @@ sap.ui.define(
         oView.setBusy(true);
         let materiali = await this._getHanaData("/GetQuantity", aFilters);
         console.log(materiali);
-        this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
-        oView.setBusy(false);
 
-        if (matnr && info.Werks && info.Lgtyp) {
-          step.setValidated(true);
-          setTimeout(() => {
-            let oWizard = this.byId("wizardTrasferimento");
-            let oNextButton = oWizard._getNextButton();
-            if (oNextButton) {
-              oNextButton.setText("Continua");
-            }
-          }, 100);
-        } else {
+        if (!Array.isArray(materiali)) {
+          MessageBox.error(JSON.parse(materiali.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(materiali.responseText).error.code}` });
           step.setValidated(false);
+          oView.setBusy(false);
+        } else {
+          this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+          oView.setBusy(false);
+
+          if (matnr && info.Werks && info.Lgtyp) {
+            step.setValidated(true);
+            setTimeout(() => {
+              let oWizard = this.byId("wizardTrasferimento");
+              let oNextButton = oWizard._getNextButton();
+              if (oNextButton) {
+                oNextButton.setText("Continua");
+              }
+            }, 100);
+          } else {
+            step.setValidated(false);
+          }
         }
+
         // dati mok da cancellare
         // this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
 
@@ -247,6 +255,16 @@ sap.ui.define(
         //     },
         //   });
 
+        let cdc;
+
+        if (itemMat.WmList.Schgt) {
+          this.byId("centro_costo").setTitle("Inserimento Centro di costo");
+          cdc = true;
+        } else {
+          this.byId("centro_costo").setTitle("Inserimento magazzino");
+          cdc = false;
+        }
+
         let model = {
           item: itemMat.WmList,
           Matnr: itemMat.WmList.Matnr,
@@ -256,6 +274,7 @@ sap.ui.define(
           Lgtyp: itemMat.WmList.Lgtyp,
           new_mag: "",
           quantity: "",
+          cdc: cdc,
         };
         this.getView().setModel(new JSONModel(model), "modelloTransf");
 
@@ -264,22 +283,37 @@ sap.ui.define(
         // }
       },
 
-      onTMStep3Change() {
+      onTMStep3Change(oEvent) {
         this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
-        const wizard = this.byId("wizardTrasferimento");
+        this.getView().getModel("modelloTransf").setProperty("/quantity", "");
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 
-        if (this.getView().getModel("modelloTransf").getProperty("/new_mag") && this.getView().getModel("modelloTransf").getProperty("/new_mag") != "") {
-          step.setValidated(true);
-          setTimeout(() => {
-            let oWizard = this.byId("wizardTrasferimento");
-            let oNextButton = oWizard._getNextButton();
-            if (oNextButton) {
-              oNextButton.setText("Continua");
-            }
-          }, 100);
+        if (oEvent.getSource().getId().split("--").pop() == "new_mag2") {
+          if (oEvent.getSource().getValue().length > 1) {
+            step.setValidated(true);
+            setTimeout(() => {
+              let oWizard = this.byId("wizardTrasferimento");
+              let oNextButton = oWizard._getNextButton();
+              if (oNextButton) {
+                oNextButton.setText("Continua");
+              }
+            }, 100);
+          } else {
+            step.setValidated(false);
+          }
         } else {
-          step.setValidated(false);
+          if (oEvent.getSource().getValue().length == 4) {
+            step.setValidated(true);
+            setTimeout(() => {
+              let oWizard = this.byId("wizardTrasferimento");
+              let oNextButton = oWizard._getNextButton();
+              if (oNextButton) {
+                oNextButton.setText("Continua");
+              }
+            }, 100);
+          } else {
+            step.setValidated(false);
+          }
         }
 
         // const enabled = this._tmEnableStep4();
@@ -320,9 +354,11 @@ sap.ui.define(
       onTMStep3LiveChange(oEvent) {
         // debugger;
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
-        if (oEvent.getSource().getValue().length === 4) {
-          this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
 
+        this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
+        this.getView().getModel("modelloTransf").setProperty("/quantity", "");
+
+        if (oEvent.getSource().getId().split("--").pop() == "new_mag2") {
           step.setValidated(true);
           setTimeout(() => {
             let oWizard = this.byId("wizardTrasferimento");
@@ -332,7 +368,18 @@ sap.ui.define(
             }
           }, 100);
         } else {
-          step.setValidated(false);
+          if (oEvent.getSource().getValue().length === 4) {
+            step.setValidated(true);
+            setTimeout(() => {
+              let oWizard = this.byId("wizardTrasferimento");
+              let oNextButton = oWizard._getNextButton();
+              if (oNextButton) {
+                oNextButton.setText("Continua");
+              }
+            }, 100);
+          } else {
+            step.setValidated(false);
+          }
         }
       },
 
@@ -374,6 +421,11 @@ sap.ui.define(
             MessageBox.error(JSON.parse(response.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(response.responseText).error.code}` });
           } else {
             MessageBox.success("Registrazione effettuata.");
+            this.byId("wizardTrasferimento").discardProgress(this.byId("trasferimento_linea"));
+            this.getView().getModel("modelloTransf").setData({});
+            this.getView().getModel("trasferimentoModel").setData({});
+            this.getView().getModel("ModelloUser").setProperty("/info/Matnr", "");
+            this.getView().byId("trasferimento_linea").setValidated(false);
           }
         }
       },
