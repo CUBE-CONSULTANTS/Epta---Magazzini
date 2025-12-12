@@ -10,6 +10,7 @@
         enableScrolling="true"
         id="trasferimento_magazzino_wizard"
         showFooter="true"
+        class="changecolor"
     >
         <customHeader>
             <Bar>
@@ -43,6 +44,7 @@
                 renderMode="Page"
                 finishButtonText="Salva"
                 showNextButton="true"
+                width="100%"
             >
                 <WizardStep
                     title="Trasferimento alla linea"

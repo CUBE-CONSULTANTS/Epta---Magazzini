@@ -99,6 +99,7 @@
                     <Page
                         showHeader="false"
                         enableScrolling="false"
+                        class="changecolor"
                     >
                         <VBox
                             width="100%"

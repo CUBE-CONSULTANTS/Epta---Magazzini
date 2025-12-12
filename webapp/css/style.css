@@ -9,4 +9,5 @@
 
 .changecolor > section {
   background-color: white !important;
+  bottom: 0rem !important;
 }
