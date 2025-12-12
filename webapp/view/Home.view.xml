@@ -11,6 +11,7 @@
     <tnt:ToolPage
         id="toolPage"
         sideExpanded="true"
+        class="changecolor"
     >
         <tnt:header>
             <tnt:ToolHeader>
