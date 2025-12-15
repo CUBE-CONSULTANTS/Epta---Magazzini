@@ -81,7 +81,7 @@
                     validated="false"
                     id="quantita"
                     activate="onStepActivate"
-                    title="Inserimento quantità"
+                    title="Inserimento quantit&agrave;"
                 >
                     <c:Fragment
                         fragmentName="fdrevampxbrowser.view.Fragments.trasferimentoMagazzino.Step4"

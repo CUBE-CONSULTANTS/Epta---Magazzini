@@ -78,7 +78,7 @@
             <Label
                 design="Bold"
                 required="true"
-                text="Quantità"
+                text="Quantit&agrave;"
             />
             <Input
                 change=".onTMStep4Change"

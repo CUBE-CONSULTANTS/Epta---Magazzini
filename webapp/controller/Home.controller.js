@@ -153,65 +153,67 @@ sap.ui.define(
 
         //api call
 
-        //    new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, sMatnr),
-        // new sap.ui.model.Filter("Info/Werks", sap.ui.model.FilterOperator.EQ, sWerks),
-        // new sap.ui.model.Filter("Info/Lgort", sap.ui.model.FilterOperator.EQ, sLgort)
-        let aMatnr = new Filter({ path: "Matnr", operator: FilterOperator.EQ, value1: matnr });
-        // let aWerks = new Filter({ path: "Info/Werks", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Werks") });
-        // let aKostl = new Filter({ path: "Info/Kostl", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Kostl") });
-        // let aLgnum = new Filter({ path: "Info/Lgnum", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgnum") });
-        // let aLgort = new Filter({ path: "Info/Lgort", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgort") });
-        // let aLgtyp = new Filter({ path: "Info/Lgtyp", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgtyp") });
+        if (matnr != "") {
+          //    new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, sMatnr),
+          // new sap.ui.model.Filter("Info/Werks", sap.ui.model.FilterOperator.EQ, sWerks),
+          // new sap.ui.model.Filter("Info/Lgort", sap.ui.model.FilterOperator.EQ, sLgort)
+          let aMatnr = new Filter({ path: "Matnr", operator: FilterOperator.EQ, value1: matnr });
+          // let aWerks = new Filter({ path: "Info/Werks", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Werks") });
+          // let aKostl = new Filter({ path: "Info/Kostl", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Kostl") });
+          // let aLgnum = new Filter({ path: "Info/Lgnum", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgnum") });
+          // let aLgort = new Filter({ path: "Info/Lgort", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgort") });
+          // let aLgtyp = new Filter({ path: "Info/Lgtyp", operator: FilterOperator.EQ, value1: this.getView().getModel("ModelloUser").getProperty("/info/Lgtyp") });
 
-        let arr = Object.entries(info).map(([key, value]) => {
-          if (key != "__metadata" && key != "Matnr") {
-            return new Filter({ path: `Info/${key}`, operator: FilterOperator.EQ, value1: value });
-          }
-        });
+          let arr = Object.entries(info).map(([key, value]) => {
+            if (key != "__metadata" && key != "Matnr") {
+              return new Filter({ path: `Info/${key}`, operator: FilterOperator.EQ, value1: value });
+            }
+          });
 
-        let aFilters = [aMatnr, arr.filter(Boolean)].flat();
+          let aFilters = [aMatnr, arr.filter(Boolean)].flat();
 
-        // let aFilters = [
-        //   new Filter({
-        //     path: "Matnr",
-        //     operator: FilterOperator.EQ,
-        //     value1: matnr,
-        //   }),
-        // ];
+          // let aFilters = [
+          //   new Filter({
+          //     path: "Matnr",
+          //     operator: FilterOperator.EQ,
+          //     value1: matnr,
+          //   }),
+          // ];
 
-        oView.setBusy(true);
-        let materiali = await this._getHanaData("/GetQuantity", aFilters);
-        console.log(materiali);
+          oView.setBusy(true);
+          let materiali = await this._getHanaData("/GetQuantity", aFilters);
+          console.log(materiali);
 
-        if (!Array.isArray(materiali)) {
-          MessageBox.error(JSON.parse(materiali.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(materiali.responseText).error.code}` });
-          step.setValidated(false);
-          oView.setBusy(false);
-        } else {
-          this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
-          oView.setBusy(false);
-
-          if (matnr && info.Werks && info.Lgtyp) {
-            step.setValidated(true);
-            setTimeout(() => {
-              let oWizard = this.byId("wizardTrasferimento");
-              let oNextButton = oWizard._getNextButton();
-              if (oNextButton) {
-                oNextButton.setText("Continua");
-              }
-            }, 100);
-          } else {
+          if (!Array.isArray(materiali)) {
+            MessageBox.error(JSON.parse(materiali.responseText).error.message.value, { title: `Errore, codice ${JSON.parse(materiali.responseText).error.code}` });
             step.setValidated(false);
+            oView.setBusy(false);
+          } else {
+            this.getView().setModel(new JSONModel(materiali), "trasferimentoModel");
+            oView.setBusy(false);
+
+            if (matnr && info.Werks && info.Lgtyp) {
+              step.setValidated(true);
+              setTimeout(() => {
+                let oWizard = this.byId("wizardTrasferimento");
+                let oNextButton = oWizard._getNextButton();
+                if (oNextButton) {
+                  oNextButton.setText("Continua");
+                }
+              }, 100);
+            } else {
+              step.setValidated(false);
+            }
           }
+
+          // dati mok da cancellare
+          // this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
+
+          // if (step.getValidated()) {
+          //   step._oNextButton.firePress();
+          // }
+          //...
         }
-
-        // dati mok da cancellare
-        // this.getView().setModel(models._mokGetQuantity(), "trasferimentoModel");
-
-        // if (step.getValidated()) {
-        //   step._oNextButton.firePress();
-        // }
-        //...
       },
 
       onTMStep2SelectionChange(e) {
