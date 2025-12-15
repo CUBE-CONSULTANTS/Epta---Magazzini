@@ -78,7 +78,7 @@
             <Label
                 design="Bold"
                 required="true"
-                text="Quantit&agrave;"
+                text="{i18n>step4labelQuantity}"
             />
             <Input
                 change=".onTMStep4Change"
