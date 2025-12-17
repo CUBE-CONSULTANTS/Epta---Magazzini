@@ -27,10 +27,10 @@ sap.ui.define(
 
         let oView = this.getView();
         oView.setBusy(true);
-        xsoDataModelReport.read("/GetInfo(User='MHD_RM_3980')", {
+        xsoDataModelReport.read("/GetInfo", {
           success: function (oDataIn, oResponse) {
-            info = oDataIn.Info;
-            user = oDataIn.User;
+            info = oDataIn.results[0].Info;
+            user = oDataIn.results[0].User;
             self.getView().setModel(new sap.ui.model.json.JSONModel({ info: info, user: user }), "ModelloUser");
             self.getView().setModel(new sap.ui.model.json.JSONModel({ info: info }), "modelMag");
             oView.setBusy(false);
