@@ -32,6 +32,7 @@ sap.ui.define(
             info = oDataIn.Info;
             user = oDataIn.User;
             self.getView().setModel(new sap.ui.model.json.JSONModel({ info: info, user: user }), "ModelloUser");
+            self.getView().setModel(new sap.ui.model.json.JSONModel({ info: info }), "modelMag");
             oView.setBusy(false);
           },
           error: function (error) {
@@ -64,9 +65,13 @@ sap.ui.define(
       onQuickActionPress: function (oEvent) {
         //debugger
         var oItem = oEvent.getParameter("item");
-        this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
-        if (this.byId("toolPage").getSideExpanded()) {
-          this.byId("toolPage").setSideExpanded(false);
+        if (oEvent.getParameter("item").getText() == "Logout") {
+          this.logOutTrasf();
+        } else {
+          this.byId("pageContainer").to(this.getView().createId(oItem.getKey()));
+          if (this.byId("toolPage").getSideExpanded()) {
+            this.byId("toolPage").setSideExpanded(false);
+          }
         }
       },
       onCollapseExpandPress: function () {
@@ -147,13 +152,15 @@ sap.ui.define(
         // this.getView().getModel("trasferimentoMagazzino").setProperty("/step2/enabled", enabled);
 
         // validazione step
-        let matnr = this.getView().getModel("ModelloUser").getProperty("/info/Matnr");
-        let info = this.getView().getModel("ModelloUser").getProperty("/info");
+        let matnr = this.getView().getModel("modelMag").getProperty("/Matnr");
+        let info = this.getView().getModel("modelMag").getProperty("/info");
+        let Lgnum = this.getView().getModel("modelMag").getProperty("/info/Lgnum");
+        let Lgtyp = this.getView().getModel("modelMag").getProperty("/info/Lgtyp");
         let step = this.byId(this.byId("wizardTrasferimento").getCurrentStep());
 
         //api call
 
-        if (matnr != "") {
+        if (matnr != "" && matnr != undefined && Lgtyp != "" && Lgtyp != undefined && Lgnum != "" && Lgnum != undefined) {
           //    new sap.ui.model.Filter("Matnr", sap.ui.model.FilterOperator.EQ, sMatnr),
           // new sap.ui.model.Filter("Info/Werks", sap.ui.model.FilterOperator.EQ, sWerks),
           // new sap.ui.model.Filter("Info/Lgort", sap.ui.model.FilterOperator.EQ, sLgort)
@@ -213,6 +220,8 @@ sap.ui.define(
           //   step._oNextButton.firePress();
           // }
           //...
+        } else {
+          step.setValidated(false);
         }
       },
 
@@ -279,6 +288,9 @@ sap.ui.define(
           cdc: cdc,
         };
         this.getView().setModel(new JSONModel(model), "modelloTransf");
+        if (cdc) {
+          this.getView().getModel("modelloTransf").setProperty("/new_mag", this.getView().getModel("modelMag").getProperty("/info/Kostl"));
+        }
 
         // if (step.getValidated()) {
         //   step._oNextButton.firePress();
@@ -443,6 +455,19 @@ sap.ui.define(
         };
         let inputId = oMap[stepId];
         let input = this.byId(inputId);
+
+        if (stepId == "centro_costo") {
+          if (this.getView().getModel("modelloTransf").getProperty("/cdc")) {
+            this.byId(oEvent.getSource().getId()).setValidated(true);
+            setTimeout(() => {
+              let oWizard = this.byId("wizardTrasferimento");
+              let oNextButton = oWizard._getNextButton();
+              if (oNextButton) {
+                oNextButton.setText("Continua");
+              }
+            }, 100);
+          }
+        }
 
         setTimeout(function () {
           input.$().find("input").focus();

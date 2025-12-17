@@ -87,6 +87,11 @@
                         icon="sap-icon://shipping-status"
                         selectable="true"
                     />
+                    <tnt:NavigationListItem
+                        text="Logout"
+                        icon="sap-icon://log"
+                        selectable="true"
+                    />
                 </tnt:NavigationList>
             </tnt:SideNavigation>
         </tnt:sideContent>

@@ -31,7 +31,7 @@
             />
             <Input
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Werks}"
+                value="{modelMag>/info/Lgnum}"
             />
 
             <Label
@@ -41,7 +41,7 @@
             />
             <Input
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Lgtyp}"
+                value="{modelMag>/info/Lgtyp}"
             />
 
             <Label
@@ -51,7 +51,7 @@
             />
             <Input
                 change=".onTMStep1Change"
-                value="{ModelloUser>/info/Matnr}"
+                value="{modelMag>/Matnr}"
                 id="Matnr"
             />
         </f:content>

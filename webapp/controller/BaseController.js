@@ -172,6 +172,16 @@ sap.ui.define(
           });
         });
       },
+
+      logOutTrasf: function () {
+        const url = location.origin + "/sap/public/bc/icf/logoff";
+        // window.location.assign(url);
+        sap.m.URLHelper.redirect(url, false);
+        // window.location = url
+        // window.open("/sap/public/bc/icf/logoff", "_blank");
+        // window.history.pushState("", "", url);
+        // window.location.reload();
+      },
     });
   }
 );
