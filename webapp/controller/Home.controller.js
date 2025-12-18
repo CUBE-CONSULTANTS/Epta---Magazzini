@@ -396,6 +396,7 @@ sap.ui.define(
         oInput.setValue(sValue);
         if (oInput.getValue().length != 4) {
           step.setValidated(false);
+          this.byId("centro_costo").setValidated(false);
         } else {
           step.setValidated(true);
           setTimeout(() => {
