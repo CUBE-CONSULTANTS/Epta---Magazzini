@@ -38,6 +38,9 @@ sap.ui.define(
           error: function (error) {
             console.log("error calling hana DB", error);
             oView.setBusy(false);
+            if (error.statusCode == 403) {
+              MessageBox.error("Nessuna autorizzazione ad accedere ai servizi");
+            }
           },
         });
       },
