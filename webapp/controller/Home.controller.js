@@ -376,9 +376,6 @@ sap.ui.define(
         const oInput = oEvent.getSource();
         let sValue = oInput.getValue();
 
-        // rimuove tutto ciò che non è numero
-        sValue = sValue.replace(/\D/g, "");
-
         // taglia a 4 cifre
         if (sValue.length > 4) {
           sValue = sValue.substring(0, 4);
