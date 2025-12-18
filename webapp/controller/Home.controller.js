@@ -474,7 +474,7 @@ sap.ui.define(
             this.byId("wizardTrasferimento").discardProgress(this.byId("trasferimento_linea"));
             this.getView().getModel("modelloTransf").setData({});
             this.getView().getModel("trasferimentoModel").setData({});
-            this.getView().getModel("ModelloUser").setProperty("/info/Matnr", "");
+            this.getView().getModel("modelMag").setProperty("/Matnr", "");
             this.getView().byId("trasferimento_linea").setValidated(false);
           }
         }
