@@ -66,6 +66,9 @@
                 value="{modelloTransf>/new_mag}"
                 id="new_mag"
                 visible="{= !${modelloTransf>/cdc} }"
+                type="Number"
+                maxLength="4"
+                liveChange="onTMStep3LiveChange"
             />
 
             <Label

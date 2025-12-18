@@ -327,6 +327,7 @@ sap.ui.define(
             }, 100);
           } else {
             step.setValidated(false);
+            MessageBox.warning("Il valore non può essere diverso da 4 cifre");
           }
         }
 
@@ -372,7 +373,16 @@ sap.ui.define(
         this.byId("wizardTrasferimento").discardProgress(this.byId("centro_costo"));
         this.getView().getModel("modelloTransf").setProperty("/quantity", "");
 
-        if (oEvent.getSource().getId().split("--").pop() == "new_mag2") {
+        const oInput = oEvent.getSource();
+        let sValue = oInput.getValue();
+
+        // rimuove tutto ciò che non è numero
+        sValue = sValue.replace(/\D/g, "");
+
+        // taglia a 4 cifre
+        if (sValue.length > 4) {
+          sValue = sValue.substring(0, 4);
+        } else if (oEvent.getSource().getValue().length === 4) {
           step.setValidated(true);
           setTimeout(() => {
             let oWizard = this.byId("wizardTrasferimento");
@@ -381,20 +391,45 @@ sap.ui.define(
               oNextButton.setText("Continua");
             }
           }, 100);
-        } else {
-          if (oEvent.getSource().getValue().length === 4) {
-            step.setValidated(true);
-            setTimeout(() => {
-              let oWizard = this.byId("wizardTrasferimento");
-              let oNextButton = oWizard._getNextButton();
-              if (oNextButton) {
-                oNextButton.setText("Continua");
-              }
-            }, 100);
-          } else {
-            step.setValidated(false);
-          }
         }
+
+        oInput.setValue(sValue);
+        if (oInput.getValue().length != 4) {
+          step.setValidated(false);
+        } else {
+          step.setValidated(true);
+          setTimeout(() => {
+            let oWizard = this.byId("wizardTrasferimento");
+            let oNextButton = oWizard._getNextButton();
+            if (oNextButton) {
+              oNextButton.setText("Continua");
+            }
+          }, 50);
+        }
+
+        // if (oEvent.getSource().getId().split("--").pop() == "new_mag2") {
+        //   step.setValidated(true);
+        //   setTimeout(() => {
+        //     let oWizard = this.byId("wizardTrasferimento");
+        //     let oNextButton = oWizard._getNextButton();
+        //     if (oNextButton) {
+        //       oNextButton.setText("Continua");
+        //     }
+        //   }, 100);
+        // } else {
+        //   if (oEvent.getSource().getValue().length === 4) {
+        //     step.setValidated(true);
+        //     setTimeout(() => {
+        //       let oWizard = this.byId("wizardTrasferimento");
+        //       let oNextButton = oWizard._getNextButton();
+        //       if (oNextButton) {
+        //         oNextButton.setText("Continua");
+        //       }
+        //     }, 100);
+        //   } else {
+        //     step.setValidated(false);
+        //   }
+        // }
       },
 
       onTMStep4Change() {
